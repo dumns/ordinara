@@ -1,0 +1,6 @@
+# Referensi visual/desain — jangan di-commit
+reference/
+
+node_modules/
+dist/
+.DS_Store
