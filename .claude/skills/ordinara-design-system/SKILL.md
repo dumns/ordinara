@@ -102,13 +102,22 @@ Gunakan sebagai inspirasi gaya, bukan untuk disalin piksel per piksel.
 Nilai berikut adalah identitas visual Ordinara (di `@ordinara/tokens`). Setiap komponen baru harus memakainya; jangan menambah nilai ad-hoc.
 
 **Token**
-- Font Instrument Sans (lewat `@ordinara/ui/fonts.css`), judul memakai `font-display`.
-- Skala warna `primary` (`#2361e7` di 600), `secondary` (oranye `#f67e28`), `neutral` (slate), `success`, `warning`, `danger`, `info`, masing-masing 50–950. Semantic: `background`, `surface`, `fg`, `fg-muted`, `fg-subtle`, `border`, `border-subtle`, `ring`.
+- Font: body netral dan font display bersudut hangat untuk judul, angka, dan penanda (lewat `@ordinara/ui/fonts.css`). Semua `h1`–`h6` otomatis memakai `font-display`; tabel memakai angka rata (`tabular-nums`).
+- Warna: `primary` biru (`#2361e7` di 600) untuk aksi, `secondary` oranye (`#f67e28`), `neutral` slate, plus `success`, `warning`, `danger`, `info`, semuanya 50–950. Tampilan harus **tenang dan profesional**: hindari warna neon/mencolok (mis. lime, ungu terang), gradient ramai, dan dekorasi yang tidak punya fungsi.
 - Radius: `rounded-control` (xl, 0.75rem), `rounded-card` (2xl, 1rem), `rounded-check` (6px), `rounded-frame` (3xl). Teks tambahan: `text-btn-lg` (15px), `text-micro` (11px).
 - Shadow: `shadow-card`, `shadow-card-lg`, `shadow-glow-primary`. z-index: dropdown 20, sticky 30, overlay 40, toast 50. Motion: `ease-out-soft`, durasi fast 150ms / normal 200ms, `animate-fade-in`, `animate-spin-slow`.
 - Dark mode MEMBALIK nilai skala primitive di `.dark` / `html[data-theme="dark"]` (neutral dibalik; primary/status 50–200 dan 700–900 diganti). Karena itu pakai utilitas skala (`bg-neutral-100`, `text-primary-700`), jangan menambah `dark:` ad-hoc. Hover tombol solid memakai `hover-primary`/`hover-danger` yang tidak ikut dibalik.
-- Utilitas brand: `bg-shell` (latar gradient radial biru + oranye), `bg-brand-gradient`, `bg-brand-gradient-soft`, `scrollbar-none`.
+- Utilitas brand: `bg-shell` (gradient radial lembut biru + oranye), `bg-brand-gradient`, `bg-brand-gradient-soft`, `scrollbar-none`.
 - Ikon lewat `icon()` (regular/bold/fill).
+
+**Ciri khas Ordinara (halus, fungsional)**
+- **Font display** untuk semua `h1`–`h6`, judul, dan angka; font body netral; angka tabel rata.
+- **Logo**: tiga batang naik berurutan (1 · 2 · 3) di ubin biru membulat (`logoMark()`, `logoWordmark()`).
+- **Sudut membulat biasa (sirkular)**, bukan squircle: sudut squircle membuat tombol dan kartu terlihat kotak. Radius hanya lewat token (`rounded-control`, `rounded-card`, `rounded-frame`).
+- **Metrik font dikoreksi** (`ascent/descent-override` di `fonts.css`) supaya teks terlihat berada di tengah vertikal tombol, badge, dan input; jangan mengakalinya dengan padding atas/bawah yang berbeda.
+- Komponen dan tombol mengikuti nilai acuan di bawah **persis** (ukuran, warna, shadow, state). Jangan menambah efek tambahan pada tombol (kilau, glow, gerak angkat) atau dekorasi pada card (penanda sudut, indeks, pola latar).
+- **Efek tekan tombol hanya satu**: `scale(0.98)` lewat `transform` di `styles.css` (dengan transisi dan `will-change` saat hover/fokus/tekan). Gerakan halus teks saat hover (akibat `will-change`) disengaja dan disukai pengguna: jangan dihapus. Jangan menambah `active:scale-*` Tailwind di markup atau komponen: properti `scale`-nya tidak ikut ditransisikan sehingga melompat dan bertumpuk dengan efek global.
+- Jangan memakai `primary-800` untuk latar gelap yang harus tetap gelap di dark mode (skala itu dibalik); pakai `hover-primary` atau nilai literal.
 
 **Komponen (nilai)**
 - **Button**: satu basis (`rounded-control font-semibold gap-2`, `active:scale-[0.98]`, ring-2 offset-2 saat fokus); ukuran sm `h-8 px-3 text-xs`, md `h-10 px-4 text-sm`, lg `h-12 px-6 text-btn-lg`; varian hanya warna: primary (`bg-primary-600 shadow-sm`), secondary (`bg-primary-50`), accent (oranye), outline (`border border-border bg-surface`, datar), ghost, danger, white. Loading = spinner, teks `text-transparent!`.

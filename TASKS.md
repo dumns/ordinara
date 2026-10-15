@@ -18,7 +18,7 @@ Dokumen ini adalah sumber kebenaran progres pekerjaan. **Wajib diperbarui di PR 
 | Bagian | Total | Masuk versi 0.1.0 | Selesai |
 |---|---|---|---|
 | Infrastruktur & rilis | 18 | - | 8 |
-| Foundation | 11 | - | 10 |
+| Foundation | 12 | - | 11 |
 | Components | 44 | 17 | 0 |
 | Forms | 13 | 7 | 0 |
 | Typography | 9 | 1 | 0 |
@@ -57,14 +57,15 @@ Dokumen ini adalah sumber kebenaran progres pekerjaan. **Wajib diperbarui di PR 
 | 1 | Design tokens (primitive + semantic) | 2026-10-15 | 2026-10-15 | ✅ | Primitive `@theme static` + alias `@theme inline`; dark membalik skala primitive (`.dark` / `data-theme=dark`) |
 | 2 | Dark mode | 2026-10-15 | 2026-10-15 | ✅ | Diverifikasi di preview & Storybook (light/dark, bersarang). Pakai token, hindari `dark:` |
 | 3 | Configuration (Tailwind + plugin komponen) | 2026-10-15 | 2026-10-15 | ✅ | Tailwind v4 CSS-first; `@source` bundel JS plugin + safelist class plugin |
-| 4 | Colors / palette status (info, success, warning, danger) | 2026-10-15 | 2026-10-15 | ✅ | Skala primary/secondary/neutral/success/warning/danger/info 50–950 (brand #2361e7). Kontras AA belum diaudit |
-| 5 | Typography scale | 2026-10-15 | 2026-10-15 | ✅ | Font Ordinara (opsional via `fonts.css`) + skala default Tailwind + `text-btn-lg`, `text-micro` |
-| 6 | Spacing, radius, shadow scale | 2026-10-15 | 2026-10-15 | ✅ | Grid 4px; radius control/card/check/frame; shadow card/card-lg/glow-primary; z-index dropdown 20 / sticky 30 / overlay 40 / toast 50 |
-| 7 | Theming (multi-tema) | 2026-10-15 | 2026-10-15 | ✅ | `data-theme`: default, violet, emerald (menimpa skala primary; light+dark, bersarang) |
-| 8 | Icons | 2026-10-15 | 2026-10-15 | ✅ | Set ikon terkurasi via `gen:icons` (regular/bold/fill); ikon berarah flip di RTL |
-| 9 | RTL | 2026-10-15 | 2026-10-15 | ✅ | Diverifikasi `dir=rtl` di preview & Storybook; aturan utilitas logis |
-| 10 | Optimization (purge/bundle size) | 2026-10-15 | 2026-10-15 | ✅ | `npm run size` dengan budget CSS 60 kB gzip |
-| 11 | Motion tokens (+ prefers-reduced-motion) | 2026-10-15 |  | ⬜ | Durasi/easing/animasi ada; reduced-motion belum diuji di browser |
+| 4 | Brand identity (logo, tipografi, bentuk) | 2026-10-15 | 2026-10-15 | ✅ | Logo 3 batang berurutan, font display dengan metrik vertikal terkoreksi. Halaman Brand identity di Storybook + preview. Tampilan sengaja tenang dan profesional |
+| 5 | Colors / palette status (info, success, warning, danger) | 2026-10-15 | 2026-10-15 | ✅ | Skala primary (biru), secondary (oranye), neutral (slate), success/warning/danger/info 50–950. Kontras AA belum diaudit |
+| 6 | Typography scale | 2026-10-15 | 2026-10-15 | ✅ | Font Ordinara (opsional via `fonts.css`) + skala default Tailwind + `text-btn-lg`, `text-micro` |
+| 7 | Spacing, radius, shadow scale | 2026-10-15 | 2026-10-15 | ✅ | Grid 4px; radius control/card/check/frame; shadow card/card-lg/glow-primary; z-index dropdown 20 / sticky 30 / overlay 40 / toast 50 |
+| 8 | Theming (multi-tema) | 2026-10-15 | 2026-10-15 | ✅ | `data-theme`: default, violet, emerald (menimpa skala primary; light+dark, bersarang) |
+| 9 | Icons | 2026-10-15 | 2026-10-15 | ✅ | Set ikon terkurasi via `gen:icons` (regular/bold/fill); ikon berarah flip di RTL |
+| 10 | RTL | 2026-10-15 | 2026-10-15 | ✅ | Diverifikasi `dir=rtl` di preview & Storybook; aturan utilitas logis |
+| 11 | Optimization (purge/bundle size) | 2026-10-15 | 2026-10-15 | ✅ | `npm run size` dengan budget CSS 60 kB gzip |
+| 12 | Motion tokens (+ prefers-reduced-motion) | 2026-10-15 |  | ⬜ | Durasi/easing/animasi ada; reduced-motion belum diuji di browser |
 
 ## 3. Components
 
@@ -177,4 +178,5 @@ Helper TS (fungsi yang menghasilkan markup) dan komponen tambahan yang muncul di
 | 2026-10-15 | Daftar awal dibuat (Components, Forms, Typography, Plugins). |
 | 2026-10-15 | Foundation dikerjakan; preview HTML diubah menjadi app shell dengan sidebar. |
 | 2026-10-15 | Token dan helper ditulis ulang sebagai identitas visual Ordinara. |
+| 2026-10-15 | Identitas Ordinara ditambahkan: logo, font display, halaman Brand identity. |
 | 2026-10-15 | Pustaka komponen di-generate (70 halaman tersedia) dengan rilis bertahap lewat manifest; v0.1.0 memuat 25 halaman inti. Brand disatukan menjadi Ordinara. |
