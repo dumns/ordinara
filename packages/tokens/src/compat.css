@@ -1,0 +1,153 @@
+/*
+ * Jembatan token komponen -> token Ordinara.
+ *
+ * Markup pustaka komponen memakai token semantik (text-heading, bg-brand-softer,
+ * rounded-base, border-default, ...). Di sini setiap token itu dipetakan ke
+ * skala Ordinara, sehingga markup komponen bisa dipakai APA ADANYA dan tampil
+ * dengan warna, radius, dan dark mode Ordinara.
+ *
+ * Memakai `@theme inline` agar var() dievaluasi di elemen pemakai; dark mode
+ * (yang membalik skala primitive) dan tema brand ikut bekerja tanpa blok dark
+ * tersendiri.
+ */
+
+@theme inline {
+  --font-body: var(--font-sans);
+
+  /* Teks */
+  --color-body: var(--color-neutral-600);
+  --color-body-subtle: var(--color-neutral-500);
+  --color-heading: var(--color-neutral-900);
+  --color-fg-brand-subtle: var(--color-primary-300);
+  --color-fg-brand: var(--color-primary-700);
+  --color-fg-brand-strong: var(--color-primary-700);
+  --color-fg-success: var(--color-success-700);
+  --color-fg-success-strong: var(--color-success-700);
+  --color-fg-danger: var(--color-danger-700);
+  --color-fg-danger-strong: var(--color-danger-700);
+  --color-fg-warning-subtle: var(--color-warning-600);
+  --color-fg-warning: var(--color-warning-700);
+  --color-fg-yellow: var(--color-warning-400);
+  --color-fg-disabled: var(--color-neutral-400);
+  --color-fg-purple: var(--color-purple-600);
+  --color-fg-cyan: var(--color-cyan-600);
+  --color-fg-indigo: var(--color-indigo-600);
+  --color-fg-pink: var(--color-pink-600);
+  --color-fg-lime: var(--color-lime-600);
+
+  /* Latar netral */
+  --color-neutral-primary-soft: var(--color-surface);
+  --color-neutral-primary: var(--color-surface);
+  --color-neutral-primary-medium: var(--color-surface);
+  --color-neutral-primary-strong: var(--color-surface);
+  --color-neutral-secondary-soft: var(--color-neutral-50);
+  --color-neutral-secondary: var(--color-neutral-50);
+  --color-neutral-secondary-medium: var(--color-neutral-100);
+  --color-neutral-secondary-strong: var(--color-neutral-100);
+  --color-neutral-secondary-strongest: var(--color-neutral-200);
+  --color-neutral-tertiary-soft: var(--color-neutral-100);
+  --color-neutral-tertiary: var(--color-neutral-100);
+  --color-neutral-tertiary-medium: var(--color-neutral-100);
+  --color-neutral-quaternary: var(--color-neutral-200);
+  --color-neutral-quaternary-medium: var(--color-neutral-200);
+  --color-gray: var(--color-neutral-300);
+
+  /* Latar brand */
+  --color-brand-softer: var(--color-primary-50);
+  --color-brand-soft: var(--color-primary-100);
+  --color-brand: var(--color-primary-600);
+  --color-brand-medium: var(--color-primary-200);
+  --color-brand-strong: var(--color-hover-primary);
+
+  /* Latar status */
+  --color-success-soft: var(--color-success-50);
+  --color-success: var(--color-success-600);
+  --color-success-medium: var(--color-success-100);
+  --color-success-strong: var(--color-success-700);
+  --color-danger-soft: var(--color-danger-50);
+  --color-danger: var(--color-danger-600);
+  --color-danger-medium: var(--color-danger-100);
+  --color-danger-strong: var(--color-hover-danger);
+  --color-warning-soft: var(--color-warning-50);
+  --color-warning: var(--color-warning-500);
+  --color-warning-medium: var(--color-warning-100);
+  --color-warning-strong: var(--color-warning-700);
+
+  /* Gelap (literal: tidak ikut dibalik) */
+  --color-dark-soft: #1e293b;
+  --color-dark: #1e293b;
+  --color-dark-strong: #0f172a;
+  --color-disabled: var(--color-neutral-100);
+
+  /* Aksen warna lain: palet Tailwind */
+  --color-purple: var(--color-purple-500);
+  --color-sky: var(--color-sky-500);
+  --color-teal: var(--color-teal-600);
+  --color-pink: var(--color-pink-600);
+  --color-cyan: var(--color-cyan-500);
+  --color-fuchsia: var(--color-fuchsia-600);
+  --color-indigo: var(--color-indigo-600);
+  --color-orange: var(--color-orange-400);
+
+  /* Border */
+  --color-buffer: var(--color-surface);
+  --color-buffer-medium: var(--color-surface);
+  --color-buffer-strong: var(--color-surface);
+  --color-muted: var(--color-neutral-50);
+  --color-light-subtle: var(--color-neutral-100);
+  --color-light: var(--color-neutral-100);
+  --color-light-medium: var(--color-neutral-100);
+  --color-default-subtle: var(--color-neutral-200);
+  --color-default: var(--color-neutral-200);
+  --color-default-medium: var(--color-neutral-200);
+  --color-default-strong: var(--color-neutral-300);
+
+  /* Border status */
+  --color-success-subtle: color-mix(in srgb, var(--color-success-500) 30%, transparent);
+  --color-danger-subtle: color-mix(in srgb, var(--color-danger-500) 30%, transparent);
+  --color-warning-subtle: color-mix(in srgb, var(--color-warning-500) 30%, transparent);
+  --color-brand-subtle: var(--color-primary-200);
+  --color-brand-light: var(--color-primary-500);
+  --color-dark-subtle: #1e293b;
+  --color-dark-backdrop: #020617;
+
+  /* Alias palet Tailwind yang dipakai markup komponen -> skala Ordinara */
+  --color-gray-50: var(--color-neutral-50);
+  --color-gray-100: var(--color-neutral-100);
+  --color-gray-200: var(--color-neutral-200);
+  --color-gray-300: var(--color-neutral-300);
+  --color-gray-400: var(--color-neutral-400);
+  --color-gray-500: var(--color-neutral-500);
+  --color-gray-600: var(--color-neutral-600);
+  --color-gray-700: var(--color-neutral-700);
+  --color-gray-800: var(--color-neutral-800);
+  --color-gray-900: var(--color-neutral-900);
+  --color-gray-950: var(--color-neutral-950);
+  --color-blue-50: var(--color-primary-50);
+  --color-blue-100: var(--color-primary-100);
+  --color-blue-200: var(--color-primary-200);
+  --color-blue-300: var(--color-primary-300);
+  --color-blue-400: var(--color-primary-400);
+  --color-blue-500: var(--color-primary-500);
+  --color-blue-600: var(--color-primary-600);
+  --color-blue-700: var(--color-primary-700);
+  --color-blue-800: var(--color-primary-800);
+  --color-blue-900: var(--color-primary-900);
+  --color-blue-950: var(--color-primary-950);
+}
+
+/* Skala tambahan yang berbeda dari default Tailwind (dipakai markup komponen) */
+@theme static {
+  --text-2xs: 0.625rem;
+  --spacing-8xl: 90rem;
+  --leading-heading-none: 60px;
+  --tracking-tighter: -0.8px;
+  --tracking-tight: -0.4px;
+
+  --radius-xxs: 2px;
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius: 8px;
+  --radius-base: 12px;
+  --radius-lg: 16px;
+}

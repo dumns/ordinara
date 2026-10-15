@@ -1,0 +1,204 @@
+/*
+ * Primitive tokens — nilai mentah (skala warna, radius, tipografi, motion).
+ * Nilai-nilai ini adalah identitas visual Ordinara.
+ * Komponen boleh memakai skala ini langsung (bg-primary-600) atau lewat
+ * alias semantic (semantic.css). Grid spasi = default Tailwind (4px).
+ */
+
+@theme static {
+  /* Font: Instrument Sans (OFL). Muat lewat @ordinara/ui/fonts.css */
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  /* Neutral */
+  --color-neutral-50: #f8fafc;
+  --color-neutral-100: #f1f5f9;
+  --color-neutral-200: #e2e8f0;
+  --color-neutral-300: #cbd5e1;
+  --color-neutral-400: #94a3b8;
+  --color-neutral-500: #64748b;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1e293b;
+  --color-neutral-900: #0f172a;
+  --color-neutral-950: #020617;
+
+  /* Brand primary */
+  --color-primary-50: #f0f5fe;
+  --color-primary-100: #e2ebfd;
+  --color-primary-200: #c6d7fb;
+  --color-primary-300: #98b6f6;
+  --color-primary-400: #5d8bef;
+  --color-primary-500: #3d74eb;
+  --color-primary-600: #2361e7;
+  --color-primary-700: #1950c8;
+  --color-primary-800: #1843a0;
+  --color-primary-900: #173678;
+  --color-primary-950: #112245;
+
+  /* Brand secondary */
+  --color-secondary-50: #fff6f0;
+  --color-secondary-100: #feeadd;
+  --color-secondary-200: #fcd3b6;
+  --color-secondary-300: #fab380;
+  --color-secondary-400: #f89854;
+  --color-secondary-500: #f7893b;
+  --color-secondary-600: #f67e28;
+  --color-secondary-700: #d56515;
+  --color-secondary-800: #ac5415;
+  --color-secondary-900: #8c4817;
+  --color-secondary-950: #502b11;
+
+  /* Soft mid-stop untuk gradient brand */
+  --color-brand-soft-mid: #f5f8ff;
+
+  /* Status: success */
+  --color-success-50: #ecfdf5;
+  --color-success-100: #d1fae5;
+  --color-success-200: #a7f3d0;
+  --color-success-300: #6ee7b7;
+  --color-success-400: #34d399;
+  --color-success-500: #10b981;
+  --color-success-600: #059669;
+  --color-success-700: #047857;
+  --color-success-800: #065f46;
+  --color-success-900: #064e3b;
+  --color-success-950: #022c22;
+
+  /* Status: warning */
+  --color-warning-50: #fffbeb;
+  --color-warning-100: #fef3c7;
+  --color-warning-200: #fde68a;
+  --color-warning-300: #fcd34d;
+  --color-warning-400: #fbbf24;
+  --color-warning-500: #f59e0b;
+  --color-warning-600: #d97706;
+  --color-warning-700: #b45309;
+  --color-warning-800: #92400e;
+  --color-warning-900: #78350f;
+  --color-warning-950: #451a03;
+
+  /* Status: danger */
+  --color-danger-50: #fef2f2;
+  --color-danger-100: #fee2e2;
+  --color-danger-200: #fecaca;
+  --color-danger-300: #fca5a5;
+  --color-danger-400: #f87171;
+  --color-danger-500: #ef4444;
+  --color-danger-600: #dc2626;
+  --color-danger-700: #b91c1c;
+  --color-danger-800: #991b1b;
+  --color-danger-900: #7f1d1d;
+  --color-danger-950: #450a0a;
+
+  /* Status: info */
+  --color-info-50: #f0f9ff;
+  --color-info-100: #e0f2fe;
+  --color-info-200: #bae6fd;
+  --color-info-300: #7dd3fc;
+  --color-info-400: #38bdf8;
+  --color-info-500: #0ea5e9;
+  --color-info-600: #0284c7;
+  --color-info-700: #0369a1;
+  --color-info-800: #075985;
+  --color-info-900: #0c4a6e;
+  --color-info-950: #082f49;
+
+  /* Permukaan (semantic literal; diganti saat dark) */
+  --color-surface: #ffffff;
+
+  /* Warna hover untuk tombol solid. TIDAK ikut dibalik saat dark. */
+  --color-hover-primary: #1950c8;
+  --color-hover-danger: #b91c1c;
+
+  /* Radius: kontrol, kartu, checkbox, frame/overlay */
+  --radius-control: 0.75rem;
+  --radius-card: 1rem;
+  --radius-check: 0.375rem;
+  --radius-frame: 1.5rem;
+
+  /* Tipografi: selain skala default Tailwind */
+  --text-btn-lg: 0.9375rem; /* 15px */
+  --text-micro: 0.6875rem; /* 11px */
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-fade-in: fade-in 0.4s var(--ease-out-soft);
+  --animate-spin-slow: spin 0.7s linear infinite;
+  /* Alert/flag/toast: masuk dari atas, keluar ke atas */
+  --animate-flag-in: flag-in var(--duration-normal) var(--ease-out-soft) both;
+  --animate-flag-out: flag-out var(--duration-fast) ease-in both;
+
+  /* Elevasi */
+  --shadow-card:
+    0 1px 2px 0 color-mix(in srgb, var(--color-neutral-900) 4%, transparent),
+    0 12px 24px -10px color-mix(in srgb, var(--color-neutral-900) 10%, transparent);
+  --shadow-card-lg:
+    0 4px 8px 0 color-mix(in srgb, var(--color-neutral-900) 4%, transparent),
+    0 24px 48px -12px color-mix(in srgb, var(--color-neutral-900) 18%, transparent);
+  --shadow-glow-primary: 0 8px 30px -6px color-mix(in srgb, var(--color-primary-600) 45%, transparent);
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes flag-in {
+    from {
+      opacity: 0;
+      transform: translateY(-0.75rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes flag-out {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-0.5rem);
+    }
+  }
+}
+
+:root {
+  /* Motion: durasi */
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+
+  /* Layering */
+  --z-dropdown: 20;
+  --z-sticky: 30;
+  --z-overlay: 40;
+  --z-toast: 50;
+}
+
+@utility duration-fast {
+  transition-duration: var(--duration-fast);
+}
+@utility duration-normal {
+  transition-duration: var(--duration-normal);
+}
+
+@utility z-dropdown {
+  z-index: var(--z-dropdown);
+}
+@utility z-sticky {
+  z-index: var(--z-sticky);
+}
+@utility z-overlay {
+  z-index: var(--z-overlay);
+}
+@utility z-toast {
+  z-index: var(--z-toast);
+}

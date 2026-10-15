@@ -1,74 +1,8 @@
 /*
- * Ordinara tokens
- * Primitive (palet mentah) -> Semantic (dipakai komponen). Komponen hanya
- * boleh memakai token semantic. Dark mode lewat class `.dark`.
+ * Ordinara tokens (Tailwind CSS v4).
+ * Primitive -> Semantic (+ dark) -> Tema brand -> Jembatan token komponen (compat).
  */
-
-@theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-
-  /* Primitive: brand */
-  --color-brand-50: #eff6ff;
-  --color-brand-100: #dbeafe;
-  --color-brand-200: #bfdbfe;
-  --color-brand-300: #93c5fd;
-  --color-brand-400: #60a5fa;
-  --color-brand-500: #3b82f6;
-  --color-brand-600: #2563eb;
-  --color-brand-700: #1d4ed8;
-  --color-brand-800: #1e40af;
-  --color-brand-900: #1e3a8a;
-
-  /* Primitive: neutral */
-  --color-neutral-0: #ffffff;
-  --color-neutral-50: #f8fafc;
-  --color-neutral-100: #f1f5f9;
-  --color-neutral-200: #e2e8f0;
-  --color-neutral-300: #cbd5e1;
-  --color-neutral-500: #64748b;
-  --color-neutral-700: #334155;
-  --color-neutral-800: #1e293b;
-  --color-neutral-900: #0f172a;
-  --color-neutral-950: #020617;
-
-  /* Semantic (nilai light; override di .dark) */
-  --color-surface: var(--ord-surface);
-  --color-surface-sunken: var(--ord-surface-sunken);
-  --color-surface-raised: var(--ord-surface-raised);
-  --color-border-default: var(--ord-border);
-  --color-text-default: var(--ord-text);
-  --color-text-subtle: var(--ord-text-subtle);
-  --color-text-inverse: var(--ord-text-inverse);
-  --color-accent: var(--ord-accent);
-  --color-accent-hover: var(--ord-accent-hover);
-  --color-focus-ring: var(--ord-focus-ring);
-
-  --radius-card: 0.75rem;
-  --radius-control: 0.5rem;
-}
-
-:root {
-  --ord-surface: var(--color-neutral-0);
-  --ord-surface-sunken: var(--color-neutral-50);
-  --ord-surface-raised: var(--color-neutral-0);
-  --ord-border: var(--color-neutral-200);
-  --ord-text: var(--color-neutral-900);
-  --ord-text-subtle: var(--color-neutral-500);
-  --ord-text-inverse: var(--color-neutral-0);
-  --ord-accent: var(--color-brand-600);
-  --ord-accent-hover: var(--color-brand-700);
-  --ord-focus-ring: var(--color-brand-300);
-}
-
-.dark {
-  --ord-surface: var(--color-neutral-900);
-  --ord-surface-sunken: var(--color-neutral-950);
-  --ord-surface-raised: var(--color-neutral-800);
-  --ord-border: var(--color-neutral-700);
-  --ord-text: var(--color-neutral-50);
-  --ord-text-subtle: var(--color-neutral-300);
-  --ord-text-inverse: var(--color-neutral-0);
-  --ord-accent: var(--color-brand-500);
-  --ord-accent-hover: var(--color-brand-400);
-  --ord-focus-ring: var(--color-brand-700);
-}
+@import "./primitives.css";
+@import "./semantic.css";
+@import "./themes.css";
+@import "./compat.css";
