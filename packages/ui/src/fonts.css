@@ -1,0 +1,51 @@
+/*
+ * Font Ordinara (opsional): body + display. Import hanya jika tidak memakai font sendiri.
+ *
+ * Font body dideklarasikan di sini (bukan dari paket pihak ketiga) agar metrik vertikalnya bisa
+ * dikoreksi: secara bawaan (ascent 97%, descent 25%) huruf kecil duduk ±0.1em di bawah tengah baris,
+ * sehingga label seperti "success" terlihat turun di tombol/badge. descent-override 34% menaikkan
+ * baseline ±0.045em (nilai ini dikalibrasi dari tangkapan layar: 25% terlalu bawah, 42% terlalu naik).
+ * Mengubah posisi teks cukup dengan menyesuaikan angka descent-override di bawah ini (semua bobot sama).
+ */
+@import "@fontsource-variable/bricolage-grotesque";
+
+@font-face {
+  font-family: "Instrument Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fonts/instrument-sans-latin-400.woff2") format("woff2");
+  ascent-override: 97%;
+  descent-override: 34%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Instrument Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./fonts/instrument-sans-latin-500.woff2") format("woff2");
+  ascent-override: 97%;
+  descent-override: 34%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Instrument Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("./fonts/instrument-sans-latin-600.woff2") format("woff2");
+  ascent-override: 97%;
+  descent-override: 34%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Instrument Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./fonts/instrument-sans-latin-700.woff2") format("woff2");
+  ascent-override: 97%;
+  descent-override: 34%;
+  line-gap-override: 0%;
+}

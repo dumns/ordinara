@@ -1,0 +1,170 @@
+@import "tailwindcss";
+@import "@ordinara/tokens/tokens.css";
+@import "./library/safelist.css";
+@plugin "flowbite/plugin";
+
+/* Dark lewat class `.dark` atau data-theme="dark". Utamakan token; hindari `dark:`. */
+@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
+
+/* Pindai hanya source komponen Ordinara (bukan seluruh paket plugin) agar CSS ramping. */
+@source ".";
+/* Class yang ditambahkan oleh JS komponen saat runtime (carousel, dropdown, modal, dst.) */
+@source "../../../node_modules/flowbite/dist/flowbite.js";
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-neutral-200) transparent;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-fg);
+  }
+
+  /* Kursor interaktif */
+  button:not(:disabled),
+  [role="button"],
+  select,
+  summary,
+  label:has(input[type="checkbox"]),
+  label:has(input[type="radio"]) {
+    cursor: pointer;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-neutral-100);
+    border-radius: 9999px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-primary-300);
+  }
+
+  /* Hormati prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Latar shell: gradient radial lembut biru (kiri) dan oranye (kanan). */
+@utility bg-shell {
+  background-color: var(--color-background);
+  background-image:
+    radial-gradient(1200px 600px at 0% -10%, color-mix(in srgb, var(--color-primary-200) 40%, transparent), transparent),
+    radial-gradient(1000px 500px at 100% 0%, color-mix(in srgb, var(--color-secondary-200) 35%, transparent), transparent);
+  background-attachment: fixed;
+}
+
+@utility bg-brand-gradient {
+  background-image: linear-gradient(135deg, var(--color-hover-primary) 0%, var(--color-primary-600) 55%, var(--color-primary-500) 100%);
+}
+
+@utility bg-brand-gradient-soft {
+  background-image: linear-gradient(135deg, var(--color-primary-50) 0%, var(--color-brand-soft-mid) 50%, var(--color-secondary-50) 100%);
+}
+
+/* Panah <select>: plugin form menaruh var(--color-*) di dalam data-URI SVG, yang tidak bisa di-resolve.
+   Pakai warna literal (neutral-400) yang terbaca di light maupun dark. */
+select:not([size]):not([multiple]) {
+  background-image: url("data:image/svg+xml,%3csvg aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 10 6'%3e%3cpath stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m1 1 4 4 4-4'/%3e%3c/svg%3e");
+}
+
+/* =====================================================================
+   Identitas Ordinara: halus dan fungsional
+   ===================================================================== */
+
+/* Heading memakai font display; angka tabel rata; warna sistem mengikuti brand. */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+  }
+  table {
+    font-variant-numeric: tabular-nums;
+  }
+  ::selection {
+    background-color: var(--color-primary-200);
+  }
+  html {
+    accent-color: var(--color-primary-600);
+    caret-color: var(--color-primary-600);
+  }
+  a {
+    text-underline-offset: 3px;
+  }
+}
+
+/* Tombol: bobot semibold dan efek tekan yang mulus.
+   - Satu-satunya efek tekan: scale 0.98 lewat `transform` (jangan menambah `active:scale-*` Tailwind;
+     properti `scale`-nya tidak ikut ditransisikan sehingga melompat dan bertumpuk dengan ini).
+   - `will-change` dipasang saat hover/fokus/tekan agar tombol sudah berada di layer kompositor sebelum
+     ditekan: teks di-skala sebagai bitmap yang stabil, tidak di-raster ulang di akhir transisi (lompatan).
+     Efek sampingnya, teks bergeser halus (±1px) saat hover: ini disengaja dan disukai. */
+button[class*="font-medium"],
+a[class*="font-medium"][class*="rounded"] {
+  font-weight: 600;
+}
+button {
+  transition-property: color, background-color, border-color, box-shadow, transform;
+  transition-duration: var(--duration-fast);
+  transition-timing-function: var(--ease-out-soft);
+}
+button:not(:disabled):hover,
+button:not(:disabled):focus-visible,
+button:not(:disabled):active {
+  will-change: transform;
+}
+button:not(:disabled):active {
+  transform: scale(0.98);
+}
+
+/* Varian "secondary": tint primary (bukan abu), seperti tombol sekunder Ordinara. */
+button[class~="bg-neutral-secondary-medium"][class~="border-default-medium"],
+a[class~="bg-neutral-secondary-medium"][class~="border-default-medium"][class~="rounded-base"] {
+  background-color: var(--color-primary-50);
+  border-color: transparent;
+  color: var(--color-primary-700);
+  box-shadow: none;
+}
+button[class~="bg-neutral-secondary-medium"][class~="border-default-medium"]:hover:not(:disabled) {
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-700);
+}
+
+/* Kartu: border tipis + bayangan lembut khas Ordinara. */
+[class~="bg-neutral-primary-soft"][class~="rounded-base"][class~="shadow-xs"] {
+  border-color: color-mix(in srgb, var(--color-border) 70%, transparent);
+  box-shadow: var(--shadow-card);
+}

@@ -1,0 +1,37 @@
+{
+  "name": "@ordinara/ui",
+  "version": "0.1.0",
+  "description": "Ordinara UI components",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles.css": "./src/styles.css",
+    "./fonts.css": "./src/fonts.css",
+    "./library/*": "./src/library/pages/*.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "gen:icons": "node scripts/gen-icons.mjs",
+    "gen:library": "node scripts/gen-library.mjs && node scripts/gen-library-safelist.mjs"
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "dependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@ordinara/tokens": "0.1.0",
+    "apexcharts": "^4.7.0",
+    "flowbite": "^4.0.2",
+    "simple-datatables": "^10.3.0"
+  },
+  "peerDependencies": {
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@phosphor-icons/core": "^2.1.1",
+    "lucide-static": "^1.57.0"
+  }
+}

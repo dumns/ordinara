@@ -1,0 +1,8 @@
+/*
+ * Ordinara tokens (Tailwind CSS v4).
+ * Primitive -> Semantic (+ dark) -> Tema brand -> Jembatan token komponen (compat).
+ */
+@import "./primitives.css";
+@import "./semantic.css";
+@import "./themes.css";
+@import "./compat.css";

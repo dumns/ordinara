@@ -3,4 +3,10 @@ reference/
 
 node_modules/
 dist/
+storybook-static/
+*.tsbuildinfo
+.vercel/
+.env*
 .DS_Store
+dist-types/
+.cache/
