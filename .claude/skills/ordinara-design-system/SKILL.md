@@ -7,19 +7,50 @@ description: Panduan membangun dan merawat design system Ordinara (Tailwind CSS 
 
 Repo: https://github.com/dumns/ordinara
 
-## Git cycle
+## Git cycle & release flow
 
-Satu perubahan = satu siklus. Jangan commit/push/merge/tag tanpa diminta user.
+Jangan commit/push/merge/tag/publish tanpa diminta user. Versi mengikuti SemVer (lihat bagian Versioning); `<version>` = `X.Y.Z`.
 
-1. **Sync**: `git switch main && git pull --ff-only`.
-2. **Branch**: `git switch -c <type>/<topik-singkat>` (`feat/`, `fix/`, `docs/`, `refactor/`, `chore/`), mis. `feat/alert-stack`.
-3. **Kerja**: perubahan kecil dan fokus, satu komponen/token per branch.
-4. **Review diri**: `git status` dan `git diff`; pastikan hanya file yang relevan.
-5. **Commit**: Conventional Commits, mis. `feat(alert): stack dari atas ke bawah`. Sertakan `!`/`BREAKING CHANGE:` bila MAJOR.
-6. **Push**: `git push -u origin <branch>`.
-7. **Pull Request**: ke `main`, isi ringkasan, level SemVer (MAJOR/MINOR/PATCH), komponen terdampak, dan screenshot light/dark.
-8. **Merge**: squash merge setelah review disetujui, lalu hapus branch.
-9. **Release** (bila perlu): bump versi sesuai SemVer, `git tag vX.Y.Z`, push tag, dan perbarui changelog.
+### Branch
+
+| Branch | Fungsi |
+|---|---|
+| `master` | Core point. Semua kode yang lolos review bertemu di sini. |
+| `dev/<version>` | Pengembangan satu versi, mis. `dev/1.0.0`. Cabang kerja harian dibuat dari sini. |
+| `release/<version>` | Stabilisasi/QA satu versi, mis. `release/1.0.0`. Hanya bugfix, bump versi, changelog. |
+| `release` | Branch permanen produksi. Tersambung ke project Vercel produksi. |
+| `development` | Branch permanen integrasi untuk internal/testing. Menampung `dev/<version>` yang siap dicoba. |
+| `dev/vercel` | Branch permanen internal/testing. Tersambung ke project Vercel internal. |
+
+Cabang kerja kecil: `<type>/<topik>` dari `dev/<version>` (`feat/`, `fix/`, `docs/`, `refactor/`, `chore/`), mis. `feat/alert-stack`. Commit memakai Conventional Commits, mis. `feat(alert): stack dari atas ke bawah`; tandai `!`/`BREAKING CHANGE:` bila MAJOR.
+
+### Alur release (produksi)
+
+`dev/<version>` → `release/<version>` → `master` → `release` → Vercel (produksi)
+
+1. Kerja di cabang kecil, PR ke `dev/<version>` (ringkasan, level SemVer, komponen terdampak, screenshot light/dark).
+2. Fitur selesai: buat `release/<version>` dari `dev/<version>`; hanya perbaikan, bump versi (`package.json` dan Figma), dan changelog.
+3. PR `release/<version>` → `master`.
+4. Di `master`: `git tag v<version>` dan push tag.
+5. Merge `master` → `release`; Vercel produksi deploy otomatis.
+6. Publish package npm dari tag `v<version>`.
+
+### Alur internal/testing
+
+`dev/<version>` → `development` → `dev/vercel` (Vercel internal)
+
+Untuk mencoba perubahan sebelum rilis. Tanpa tag dan tanpa publish npm. PR `dev/<version>` → `development`, lalu merge `development` → `dev/vercel` men-deploy project Vercel internal. Alur ini tidak melewati `master`.
+
+### Artefak per rilis
+
+Setiap versi rilis menghasilkan tiga hal yang harus selaras:
+- **Changelog**: `CHANGELOG.md`, dikelompokkan *Breaking / Added / Changed / Fixed*, plus panduan migrasi untuk MAJOR.
+- **Git tag**: `v<version>` di `master`.
+- **Package npm**: versi sama dengan tag (mis. `@ordinara/*`), dipublish dari tag, bukan dari branch kerja. Versi Figma terkait dicatat di changelog.
+
+### Aturan
+- `release` hanya menerima merge dari `master`; `dev/vercel` hanya dari `development`.
+- Hotfix produksi: cabang dari `release`, perbaiki, PR ke `master`, bump PATCH, tag, sinkronkan ke `release`, lalu merge balik ke `dev/<version>` aktif.
 
 ## Fondasi teknis
 
@@ -79,4 +110,4 @@ Aturan praktis:
 3. Implementasi semua state + light/dark + responsif + a11y.
 4. Dokumentasikan (anatomy, varian, props/class, contoh, do/don't).
 5. Tentukan level SemVer dan catat di changelog.
-6. Jalankan Git cycle di atas.
+6. Jalankan Git cycle & release flow di atas.
