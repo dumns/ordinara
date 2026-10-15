@@ -1,0 +1,12 @@
+{
+  "name": "@ordinara/tokens",
+  "version": "0.1.0",
+  "description": "Ordinara design tokens (Tailwind CSS v4 theme + CSS variables)",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    "./tokens.css": "./src/tokens.css"
+  },
+  "files": ["src"],
+  "sideEffects": ["*.css"]
+}

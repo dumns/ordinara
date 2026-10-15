@@ -1,0 +1,20 @@
+{
+  "name": "@ordinara/ui",
+  "version": "0.1.0",
+  "description": "Ordinara UI components (Tailwind CSS + Flowbite)",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles.css": "./src/styles.css"
+  },
+  "files": ["src"],
+  "sideEffects": ["*.css"],
+  "dependencies": {
+    "@ordinara/tokens": "0.1.0"
+  },
+  "peerDependencies": {
+    "flowbite": "^4.0.2",
+    "tailwindcss": "^4.3.3"
+  }
+}

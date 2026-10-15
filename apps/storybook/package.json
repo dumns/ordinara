@@ -1,0 +1,24 @@
+{
+  "name": "@ordinara/storybook",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "storybook dev -p 6006",
+    "build": "storybook build"
+  },
+  "dependencies": {
+    "@ordinara/ui": "0.1.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^10.6.2",
+    "@storybook/addon-docs": "^10.6.2",
+    "@storybook/addon-themes": "^10.6.2",
+    "@storybook/html-vite": "^10.6.2",
+    "@tailwindcss/vite": "^4.3.3",
+    "flowbite": "^4.0.2",
+    "storybook": "^10.6.2",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.3.4"
+  }
+}

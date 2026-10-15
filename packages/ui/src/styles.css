@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@import "@ordinara/tokens/tokens.css";
+@plugin "flowbite/plugin";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Tailwind perlu memindai markup komponen & Flowbite */
+@source ".";
+@source "../../../node_modules/flowbite";
