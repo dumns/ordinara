@@ -111,7 +111,16 @@ Aturan praktis:
 4. Buat/perbarui **preview HTML** dan **Storybook** (lihat bagian di bawah). Tidak boleh ada komponen atau perubahan tanpa keduanya.
 5. Dokumentasikan (anatomy, varian, props/class, contoh, do/don't).
 6. Tentukan level SemVer dan catat di changelog.
-7. Jalankan Git cycle & release flow di atas.
+7. Perbarui `TASKS.md` (lihat bagian di bawah).
+8. Jalankan Git cycle & release flow di atas.
+
+## TASKS.md (checklist pekerjaan)
+
+`TASKS.md` di root repo adalah sumber kebenaran progres: daftar komponen (Flowbite: Components, Forms, Typography, Plugins, Tables), foundation, dan infrastruktur, dengan tanggal ditambahkan/selesai, versi, status Code/HTML Preview/Storybook/Dark/A11y/Changelog.
+- Centang ✅ hanya setelah dikerjakan **dan** diverifikasi. Jangan mencentang sebelum benar-benar dicek (mis. dark mode harus dilihat di browser).
+- Kolom *Ditambahkan* diisi tanggal komponen **dibuat**; kosongkan selama belum dibuat. *Selesai* diisi saat semua kolom terpenuhi.
+- Komponen baru yang muncul di tengah jalan wajib ditambahkan ke bagian "Tambahan di luar Flowbite" (tanggal *Ditambahkan* sesuai saat dibuat) dan dicatat di "Log perubahan daftar".
+- Perbarui tabel Ringkasan dan `TASKS.md` di PR yang sama dengan perubahannya.
 
 ## Preview HTML & Storybook (wajib, harus sinkron)
 
