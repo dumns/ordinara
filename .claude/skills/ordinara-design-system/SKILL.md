@@ -28,7 +28,7 @@ Cabang kerja kecil: `<type>/<topik>` dari `dev/<version>` (`feat/`, `fix/`, `doc
 
 `dev/<version>` → `release/<version>` → `master` → `release` → Vercel (produksi)
 
-1. Kerja di cabang kecil, PR ke `dev/<version>` (ringkasan, level SemVer, komponen terdampak, screenshot light/dark).
+1. Kerja di cabang kecil, PR ke `dev/<version>` (ringkasan, level SemVer, komponen terdampak, screenshot light/dark, preview HTML & Storybook sudah diperbarui dan sinkron).
 2. Fitur selesai: buat `release/<version>` dari `dev/<version>`; hanya perbaikan, bump versi (`package.json` dan Figma), dan changelog.
 3. PR `release/<version>` → `master`.
 4. Di `master`: `git tag v<version>` dan push tag.
@@ -108,6 +108,28 @@ Aturan praktis:
 1. Cek apakah Flowbite sudah punya pola dasarnya; mulai dari sana, lalu sesuaikan dengan token Ordinara.
 2. Definisikan/pakai token semantic; jangan nilai mentah.
 3. Implementasi semua state + light/dark + responsif + a11y.
-4. Dokumentasikan (anatomy, varian, props/class, contoh, do/don't).
-5. Tentukan level SemVer dan catat di changelog.
-6. Jalankan Git cycle & release flow di atas.
+4. Buat/perbarui **preview HTML** dan **Storybook** (lihat bagian di bawah). Tidak boleh ada komponen atau perubahan tanpa keduanya.
+5. Dokumentasikan (anatomy, varian, props/class, contoh, do/don't).
+6. Tentukan level SemVer dan catat di changelog.
+7. Jalankan Git cycle & release flow di atas.
+
+## Preview HTML & Storybook (wajib, harus sinkron)
+
+Setiap komponen punya dua permukaan preview:
+- **Preview HTML**: halaman HTML statis berisi markup Tailwind/Flowbite murni untuk semua varian, size, dan state, dalam light dan dark.
+- **Storybook**: story per komponen dengan args/controls, semua varian dan state, toggle tema, dan addon a11y.
+
+Aturan sinkronisasi:
+- Keduanya memakai **sumber yang sama**: token, `tailwind.config`/CSS variables, dan class komponen yang sama. Dilarang style khusus preview atau nilai yang menyimpang dari komponen.
+- Markup di HTML dan di story harus identik. Idealnya dihasilkan dari satu sumber (template/snippet bersama); bila ditulis terpisah, bandingkan manual.
+- Setiap **improvement** (komponen baru, varian, state, token, perbaikan style) wajib memperbarui **kedua** preview di PR yang sama. Perubahan style tanpa pembaruan preview dianggap belum selesai.
+- Cakupan minimum: semua varian, size, state (default, hover, focus, active, disabled, loading, error, selected), light/dark, dan responsif.
+- Perilaku khusus (mis. alert menumpuk atas ke bawah, tabel sort/filter/pagination) harus bisa dicoba di keduanya.
+
+Sebelum selesai/PR, verifikasi:
+1. Storybook build tanpa error (`storybook build`) dan story yang berubah dibuka serta dicek.
+2. Preview HTML dibuka di browser untuk light dan dark.
+3. Bandingkan keduanya berdampingan: tampilan dan class harus sama.
+4. Lampirkan screenshot keduanya di PR.
+
+Jika tidak bisa menjalankan Storybook atau browser, katakan terus terang; jangan klaim sinkron tanpa verifikasi.
