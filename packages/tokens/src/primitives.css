@@ -1,6 +1,6 @@
 /*
  * Primitive tokens — nilai mentah (skala warna, radius, tipografi, motion).
- * Nilai-nilai ini adalah identitas visual Ordinara.
+ * Nilai-nilai ini adalah identitas visual Ordinara: palet biru profesional, neutral slate, dan font display khas.
  * Komponen boleh memakai skala ini langsung (bg-primary-600) atau lewat
  * alias semantic (semantic.css). Grid spasi = default Tailwind (4px).
  */
@@ -8,7 +8,7 @@
 @theme static {
   /* Font: Instrument Sans (OFL). Muat lewat @ordinara/ui/fonts.css */
   --font-sans: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-display: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Bricolage Grotesque Variable", "Bricolage Grotesque", "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 
   /* Neutral */
