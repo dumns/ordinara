@@ -1,19 +1,44 @@
 import type { Preview } from "@storybook/html-vite";
-import { withThemeByClassName } from "@storybook/addon-themes";
+import { withThemeByClassName, withThemeByDataAttribute } from "@storybook/addon-themes";
+import { initLibrary } from "@ordinara/ui";
+import "@ordinara/ui/fonts.css";
 import "@ordinara/ui/styles.css";
 
 const preview: Preview = {
+  globalTypes: {
+    direction: {
+      description: "Arah teks (RTL)",
+      toolbar: {
+        title: "Direction",
+        icon: "transfer",
+        items: [
+          { value: "ltr", title: "LTR" },
+          { value: "rtl", title: "RTL" },
+        ],
+        dynamicTitle: true,
+      },
+    },
+  },
+  initialGlobals: { direction: "ltr" },
   decorators: [
     withThemeByClassName({
       themes: { light: "", dark: "dark" },
       defaultTheme: "light",
     }),
-    (story) => {
+    withThemeByDataAttribute({
+      themes: { default: "", violet: "violet", emerald: "emerald" },
+      defaultTheme: "default",
+      attributeName: "data-theme",
+    }),
+    (story, context) => {
       const wrap = document.createElement("div");
-      wrap.className = "bg-surface text-text-default font-sans p-6 min-h-24";
+      wrap.dir = (context.globals["direction"] as string) ?? "ltr";
+      wrap.className = "bg-background text-fg font-sans p-6 min-h-24";
       const out = story();
       if (typeof out === "string") wrap.innerHTML = out;
       else wrap.append(out);
+      // Aktifkan perilaku komponen (accordion, dropdown, modal, dst.) setelah story masuk DOM.
+      requestAnimationFrame(() => void initLibrary(wrap));
       return wrap;
     },
   ],

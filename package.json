@@ -2,7 +2,7 @@
   "name": "ordinara",
   "private": true,
   "version": "0.1.0",
-  "description": "Ordinara design system — Tailwind CSS + Flowbite",
+  "description": "Ordinara design system",
   "type": "module",
   "workspaces": [
     "packages/*",
@@ -17,7 +17,8 @@
     "build:storybook": "npm run build -w @ordinara/storybook",
     "build:preview": "npm run build -w @ordinara/preview",
     "build": "npm run build:preview && npm run build:storybook",
-    "typecheck": "tsc -b"
+    "typecheck": "tsc -b",
+    "size": "node scripts/size-report.mjs"
   },
   "devDependencies": {
     "typescript": "^6.0.3"

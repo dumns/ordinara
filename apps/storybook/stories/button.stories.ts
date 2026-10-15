@@ -1,13 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/html-vite";
-import { button, buttonSizes, buttonVariants, type ButtonProps } from "@ordinara/ui";
+import { button, buttonSizes, buttonVariants, iconNames, renderButtonDemo, type ButtonProps } from "@ordinara/ui";
 
 const meta: Meta<ButtonProps> = {
-  title: "Components/Button",
+  title: "Ordinara/Button",
   render: (args) => button(args),
-  args: { label: "Button", variant: "primary", size: "md", disabled: false },
+  args: { label: "Tambah Data", variant: "primary", size: "md", disabled: false, loading: false, iconStart: "plus" },
   argTypes: {
     variant: { control: "select", options: [...buttonVariants] },
     size: { control: "select", options: [...buttonSizes] },
+    iconStart: { control: "select", options: [undefined, ...iconNames] },
+    iconEnd: { control: "select", options: [undefined, ...iconNames] },
   },
 };
 export default meta;
@@ -15,24 +17,7 @@ export default meta;
 type Story = StoryObj<ButtonProps>;
 
 export const Playground: Story = {};
-
-export const Variants: Story = {
-  render: () =>
-    `<div class="flex flex-wrap gap-3">${buttonVariants
-      .map((variant) => button({ label: variant, variant }))
-      .join("")}</div>`,
-};
-
-export const Sizes: Story = {
-  render: () =>
-    `<div class="flex flex-wrap items-center gap-3">${buttonSizes
-      .map((size) => button({ label: `size ${size}`, size }))
-      .join("")}</div>`,
-};
-
-export const Disabled: Story = {
-  render: () =>
-    `<div class="flex flex-wrap gap-3">${buttonVariants
-      .map((variant) => button({ label: `${variant} disabled`, variant, disabled: true }))
-      .join("")}</div>`,
-};
+export const WithIconEnd: Story = { args: { label: "Pilih paket", iconStart: undefined, iconEnd: "arrow-right" } };
+export const Outline: Story = { args: { label: "Bantuan", variant: "outline", iconStart: "circle-help" } };
+export const Loading: Story = { args: { label: "Memuat…", loading: true, iconStart: undefined } };
+export const Gallery: Story = { render: renderButtonDemo };

@@ -9,3 +9,4 @@ storybook-static/
 .env*
 .DS_Store
 dist-types/
+.cache/
