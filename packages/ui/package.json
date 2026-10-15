@@ -21,7 +21,7 @@
     "*.css"
   ],
   "dependencies": {
-    "@fontsource/instrument-sans": "^5.3.0",
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
     "@ordinara/tokens": "0.1.0",
     "apexcharts": "^4.7.0",
     "flowbite": "^4.0.2",

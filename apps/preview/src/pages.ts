@@ -24,6 +24,7 @@ export interface Page {
 }
 
 const foundationMeta: Record<string, { icon: IconName; description: string }> = {
+  identity: { icon: "sparkles", description: "Logo, warna, tipografi, dan bentuk: ciri yang membuat Ordinara dikenali." },
   colors: { icon: "palette", description: "Skala primary, secondary, neutral, dan status (50–950), token semantic, serta gradient brand." },
   typography: { icon: "type", description: "Skala tipografi dari label micro sampai display, plus monospace." },
   shape: { icon: "shapes", description: "Radius, shadow, spacing grid 4px, dan layering z-index." },
@@ -79,14 +80,14 @@ const overviewPage: Page = {
   render: () => {
     const stats = (g: PageGroup) => contentPages.filter((p) => p.group === g).length;
     const total = libraryRegistry.reduce((n, e) => n + e.examples, 0);
-    return `
-    <section class="space-y-5 pb-4 pt-2">
+    return `<div class="space-y-8">
+    <section class="space-y-5 pb-2 pt-2">
       ${badge({ label: "Ordinara · Design System v0.1.0", tone: "primary", dot: true })}
-      <h2 class="font-display text-4xl font-extrabold tracking-tight text-fg sm:text-5xl sm:leading-[1.1]">Satu sistem desain.<br /><span class="text-primary-600">Semua produk Ordinara.</span></h2>
+      <h2 class="max-w-3xl font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-fg sm:text-5xl">Tatanan yang terukur<br /><span class="text-primary-600">untuk setiap produk.</span></h2>
       <p class="max-w-2xl text-base text-fg-muted">Komponen siap pakai dengan token, dark mode, tema, dan RTL. ${libraryRegistry.length} halaman, ${total} contoh; setiap contoh punya preview HTML dan Storybook yang sinkron.</p>
       <div class="flex flex-wrap gap-3">
         <a href="#/components/buttons" class="contents">${button({ label: "Jelajahi komponen", size: "lg", iconEnd: "arrow-right" })}</a>
-        <a href="#/colors" class="contents">${button({ label: "Lihat Foundation", size: "lg", variant: "outline" })}</a>
+        <a href="#/identity" class="contents">${button({ label: "Brand identity", size: "lg", variant: "outline" })}</a>
       </div>
     </section>
     <section class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">${(["Foundation", "Helpers", "Components", "Forms", "Typography", "Plugins"] as PageGroup[])
@@ -95,7 +96,7 @@ const overviewPage: Page = {
         const first = contentPages.find((p) => p.group === g)!;
         return card({ title: g, description: `${stats(g)} halaman`, badgeLabel: "Bagian", link: "Buka", href: `#/${first.id}` });
       })
-      .join("")}</section>`;
+      .join("")}</section></div>`;
   },
 };
 

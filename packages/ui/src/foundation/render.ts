@@ -5,6 +5,7 @@
 import { badge, badgeTones } from "../components/badge/badge";
 import { button } from "../components/button/button";
 import { icon, iconNames } from "./icons";
+import { renderIdentity } from "./identity";
 
 const label = "text-micro font-semibold uppercase tracking-wider text-fg-subtle";
 const card = "rounded-card border border-border/70 bg-surface p-4 shadow-card";
@@ -160,6 +161,7 @@ export function renderRtl(): string {
 }
 
 export const foundationSections = [
+  { id: "identity", title: "Brand identity", render: renderIdentity },
   { id: "colors", title: "Colors & status", render: renderColors },
   { id: "typography", title: "Typography scale", render: renderTypography },
   { id: "shape", title: "Radius, shadow, spacing, layering", render: renderShape },

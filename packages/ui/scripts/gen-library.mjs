@@ -63,7 +63,7 @@ const clean = (s) =>
 // ---------- penyesuaian brand ----------
 const svgUri = (svg) => "data:image/svg+xml," + encodeURIComponent(svg.replace(/\s+/g, " ").trim());
 const LOGO = svgUri(
-  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="#2361e7"/><path fill="#fff" d="M16 6l2.2 6.4L25 14.6l-6.8 2.2L16 24l-2.2-7.2L7 14.6l6.8-2.2z"/></svg>',
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3d74eb"/><stop offset="1" stop-color="#1950c8"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#g)"/><rect x="7.5" y="15" width="5" height="9" rx="2.5" fill="#fff" opacity=".5"/><rect x="13.5" y="10" width="5" height="14" rx="2.5" fill="#fff" opacity=".75"/><rect x="19.5" y="5" width="5" height="19" rx="2.5" fill="#fff"/></svg>',
 );
 const AVATAR = [
   ["#c6d7fb", "#2361e7"],

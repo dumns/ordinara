@@ -9,3 +9,4 @@ export * from "./library/types";
 export * from "./library/render";
 export * from "./library/registry";
 export * from "./library/scripts";
+export * from "./identity/logo";

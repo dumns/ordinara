@@ -10,6 +10,7 @@ const story = (render: () => string): Story => ({ render });
 
 const byId = Object.fromEntries(foundationSections.map((s) => [s.id, s.render]));
 
+export const Identity: Story = story(byId.identity!);
 export const Colors: Story = story(byId.colors!);
 export const Typography: Story = story(byId.typography!);
 export const Shape: Story = story(byId.shape!);

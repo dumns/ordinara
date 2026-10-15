@@ -1,9 +1,15 @@
 import "@ordinara/ui/fonts.css";
 import "@ordinara/ui/styles.css";
-import { icon, initLibrary } from "@ordinara/ui";
+import { icon, initLibrary, logoDataUri, logoMark } from "@ordinara/ui";
 import { pages, type Page } from "./pages";
 
 const root = document.documentElement;
+
+// Favicon: logo Ordinara
+const favicon = document.createElement("link");
+favicon.rel = "icon";
+favicon.href = logoDataUri();
+document.head.append(favicon);
 const shell = document.getElementById("shell")!;
 
 /* ---------- state (URL > localStorage) ---------- */
@@ -66,9 +72,9 @@ shell.innerHTML = `
   <div id="scrim" class="fixed inset-0 z-overlay hidden bg-neutral-950/50 lg:hidden"></div>
   <aside id="sidebar" class="fixed inset-y-0 start-0 z-overlay flex w-64 -translate-x-full flex-col border-e border-border/70 bg-surface transition-[transform,width] duration-300 ease-in-out rtl:translate-x-full lg:static lg:translate-x-0 lg:rtl:translate-x-0 group-data-[collapsed=true]/shell:lg:w-[72px]">
     <div class="flex h-16 items-center gap-3 border-b border-border/70 px-4">
-      <span class="flex size-9 shrink-0 items-center justify-center rounded-control bg-primary-600 text-white">${icon({ name: "sparkles", size: 20, weight: "fill" })}</span>
+      ${logoMark({ size: 36 })}
       <div class="min-w-0 flex-1 group-data-[collapsed=true]/shell:lg:hidden">
-        <div class="font-display text-base font-bold leading-4">Ordinara</div>
+        <div class="font-display text-lg font-extrabold leading-4 tracking-tight">Ordinara</div>
         <div class="text-micro text-fg-muted">Design System · v0.1.0</div>
       </div>
       <button id="collapse" type="button" aria-label="Ciutkan sidebar" class="hidden size-8 items-center justify-center rounded-control text-fg-muted hover:bg-neutral-100 lg:inline-flex group-data-[collapsed=true]/shell:lg:hidden">${icon({ name: "panel-left-close", size: 18 })}</button>
