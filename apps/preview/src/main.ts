@@ -1,5 +1,6 @@
 import "@ordinara/ui/fonts.css";
 import "@ordinara/ui/styles.css";
+import "@ordinara/icons/mask.css";
 import { icon, initLibrary, logoDataUri, logoMark } from "@ordinara/ui";
 import { pages, type Page } from "./pages";
 
@@ -55,8 +56,7 @@ const groups = ["Overview", "Foundation", "Helpers", "Components", "Forms", "Typ
 const navItem = (p: Page) => `
   <a href="#/${p.id}" data-nav="${p.id}" data-search="${(p.title + " " + p.group).toLowerCase()}" title="${p.title}"
      class="flex cursor-pointer items-center gap-3 rounded-control px-3 py-2.5 text-sm font-medium text-fg-muted transition-[color,background-color] duration-normal hover:bg-neutral-100/80 hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-300 aria-[current=page]:bg-primary-50 aria-[current=page]:text-primary-700 aria-[current=page]:hover:bg-primary-50">
-    <span class="flex w-6 shrink-0 items-center justify-center">${icon({ name: p.icon, size: 20 })}</span>
-    <span class="truncate group-data-[collapsed=true]/shell:lg:hidden">${p.title}</span>
+    <span>${p.title}</span>
   </a>`;
 
 const navGroup = (g: (typeof groups)[number]) => !pages.some((p) => p.group === g) ? "" : `
@@ -70,7 +70,7 @@ const ctl =
 
 shell.innerHTML = `
   <div id="scrim" class="fixed inset-0 z-overlay hidden bg-neutral-950/50 lg:hidden"></div>
-  <aside id="sidebar" class="fixed inset-y-0 start-0 z-overlay flex w-64 -translate-x-full flex-col border-e border-border/70 bg-surface transition-[transform,width] duration-300 ease-in-out rtl:translate-x-full lg:static lg:translate-x-0 lg:rtl:translate-x-0 group-data-[collapsed=true]/shell:lg:w-[72px]">
+  <aside id="sidebar" class="fixed inset-y-0 start-0 z-overlay flex w-64 -translate-x-full flex-col border-e border-border/70 bg-surface transition-[transform,width] duration-300 ease-in-out rtl:translate-x-full lg:static lg:translate-x-0 lg:rtl:translate-x-0 group-data-[collapsed=true]/shell:lg:hidden">
     <div class="flex h-16 items-center gap-3 border-b border-border/70 px-4">
       ${logoMark({ size: 36 })}
       <div class="min-w-0 flex-1 group-data-[collapsed=true]/shell:lg:hidden">
@@ -86,7 +86,6 @@ shell.innerHTML = `
         <kbd class="rounded-sm border border-border px-1 text-micro">⌘K</kbd>
       </label>
     </div>
-    <button id="expand" type="button" aria-label="Lebarkan sidebar" class="mx-auto mt-3 hidden size-9 items-center justify-center rounded-control text-fg-muted hover:bg-neutral-100 group-data-[collapsed=true]/shell:lg:inline-flex">${icon({ name: "panel-left-open", size: 18 })}</button>
     <nav id="nav" class="flex-1 overflow-y-auto px-3 pb-3">${groups.map(navGroup).join("")}<p id="empty" class="hidden px-3 py-6 text-sm text-fg-muted">Tidak ada hasil.</p></nav>
     <div class="border-t border-border/70 p-3 group-data-[collapsed=true]/shell:lg:hidden">
       <a href="https://github.com/dumns/ordinara" target="_blank" rel="noreferrer" class="flex items-center gap-2 rounded-control px-3 py-2 text-xs text-fg-muted hover:bg-neutral-100">${icon({ name: "external-link", size: 14 })}<span>github.com/dumns/ordinara</span></a>
@@ -94,7 +93,7 @@ shell.innerHTML = `
   </aside>
   <div class="flex min-w-0 flex-1 flex-col">
     <header class="flex h-16 shrink-0 items-center gap-3 border-b border-border/70 bg-surface/80 px-4 backdrop-blur sm:px-6">
-      <button id="menu" type="button" aria-label="Buka menu" class="${ctl} lg:hidden">${icon({ name: "menu", size: 18 })}</button>
+      <button id="menu" type="button" aria-label="Buka menu" class="${ctl} group-data-[collapsed=false]/shell:lg:hidden">${icon({ name: "menu", size: 18 })}</button>
       <nav aria-label="Breadcrumb" class="flex min-w-0 items-center gap-1.5 text-sm"><span id="crumb-group" class="hidden text-fg-muted sm:inline"></span>${icon({ name: "chevron-right", size: 14, class: "hidden text-fg-subtle sm:block" })}<span id="crumb-title" class="truncate font-semibold"></span></nav>
       <div class="ms-auto flex items-center gap-2">
         <select id="theme" aria-label="Tema brand" class="h-9 rounded-control border border-border bg-surface py-0 ps-3 pe-9 text-sm text-neutral-700">
@@ -151,7 +150,10 @@ function closeMenu() {
   $("sidebar").classList.add("-translate-x-full", "rtl:translate-x-full");
   $("scrim").classList.add("hidden");
 }
-$("menu").addEventListener("click", openMenu);
+$("menu").addEventListener("click", () => {
+  if (window.matchMedia("(min-width: 1024px)").matches) ((state.collapsed = false), update());
+  else openMenu();
+});
 $("scrim").addEventListener("click", closeMenu);
 
 /* ---------- controls ---------- */
@@ -167,7 +169,6 @@ $("dark").addEventListener("click", () => ((state.dark = !state.dark), update())
 $("rtl").addEventListener("click", () => ((state.rtl = !state.rtl), update()));
 $("theme").addEventListener("change", (e) => ((state.theme = (e.target as HTMLSelectElement).value), update()));
 $("collapse").addEventListener("click", () => ((state.collapsed = true), update()));
-$("expand").addEventListener("click", () => ((state.collapsed = false), update()));
 
 /* ---------- search ---------- */
 const search = $("search") as HTMLInputElement;

@@ -4,6 +4,7 @@
  */
 import { badge, badgeTones } from "../components/badge/badge";
 import { button } from "../components/button/button";
+import { oriNames } from "@ordinara/icons/names";
 import { icon, iconNames } from "./icons";
 import { renderIdentity } from "./identity";
 
@@ -113,14 +114,68 @@ export function renderMotion(): string {
   </div>`;
 }
 
+const codeBlock =
+  "overflow-x-auto rounded-control border border-border/70 bg-neutral-900 p-4 font-mono text-xs leading-6 text-neutral-100";
+
+const oriWeights = [
+  ["ori", "regular"],
+  ["ori-bold", "bold"],
+  ["ori-fill", "fill"],
+] as const;
+const oriSizes = [16, 20, 24, 32, 40];
+const oriCopy =
+  "navigator.clipboard&&navigator.clipboard.writeText(this.dataset.ori);const l=this.querySelector('[data-label]');if(l){const t=l.textContent;l.textContent='Disalin';setTimeout(()=>l.textContent=t,900)}";
+const oriFilter =
+  "const q=this.value.trim().toLowerCase();this.closest('section').querySelectorAll('[data-ori]').forEach(e=>e.hidden=!!q&&!e.dataset.ori.includes(q))";
+
 export function renderIcons(): string {
-  return `<div class="space-y-6">
-    <section class="space-y-3"><h3 class="${label}">Bobot</h3>
-      <div class="${card} flex flex-wrap items-center gap-6 text-fg">${(["regular", "bold", "fill"] as const)
-        .map((w) => `<span class="flex items-center gap-2 text-sm">${icon({ name: "sparkles", size: 24, weight: w })}${w}</span>`)
-        .join("")}</div>
+  const weightRow = oriWeights
+    .map(
+      ([c, w]) =>
+        `<span class="flex items-center gap-2 text-sm"><i class="${c} ori-smiley text-2xl"></i>${w}<code class="font-mono text-micro text-fg-subtle">${c} ori-smiley</code></span>`,
+    )
+    .join("");
+  const sizeRow = oriSizes
+    .map(
+      (n) =>
+        `<span class="flex flex-col items-center gap-2"><i class="ori ori-star text-primary-600" style="font-size:${n}px"></i><span class="text-micro text-fg-subtle">${n}px</span></span>`,
+    )
+    .join("");
+  const catalog = oriNames
+    .map(
+      (n) =>
+        `<button type="button" data-ori="${n}" onclick="${oriCopy}" title="Salin ori-${n}" class="flex flex-col items-center gap-2 rounded-control border border-border/70 bg-surface p-3 text-fg hover:border-primary-300 hover:bg-primary-50"><i class="ori ori-${n} text-2xl"></i><span data-label class="w-full text-center text-micro leading-4 text-fg-muted [overflow-wrap:anywhere]">${n}</span></button>`,
+    )
+    .join("");
+  return `<div class="space-y-8">
+    <section class="space-y-3"><h3 class="${label}">Pakai class (ori)</h3>
+      <p class="max-w-3xl text-sm text-fg-muted">Ikon dipanggil lewat class, seperti font ikon pada umumnya: <code class="font-mono">ori</code> + <code class="font-mono">ori-nama</code>. Ukuran mengikuti <code class="font-mono">font-size</code> dan warna mengikuti <code class="font-mono">color</code>. Ikon berarah dicerminkan otomatis pada <code class="font-mono">dir="rtl"</code>.</p>
+      <div class="${card} flex flex-wrap items-center gap-6 text-fg">${weightRow}</div>
+      <div class="${card} flex flex-wrap items-end gap-6 text-fg">${sizeRow}</div>
     </section>
-    <section class="space-y-3"><h3 class="${label}">Katalog</h3>
+    <section class="space-y-3"><h3 class="${label}">Dua jalur, nama class sama</h3>
+      <div class="grid gap-3 lg:grid-cols-2">
+        <div class="space-y-2"><div class="text-sm font-semibold">CSS mask: ringan, hanya ikon terdaftar</div>
+          <pre class="${codeBlock}">/* semua bobot */
+import "@ordinara/icons/mask.css";
+
+/* satu bobot saja (~31 kB gzip) */
+import "@ordinara/icons/mask/base.css";
+import "@ordinara/icons/mask/regular.css";</pre></div>
+        <div class="space-y-2"><div class="text-sm font-semibold">Font: seluruh ikon (1.512), dimuat saat dipakai</div>
+          <pre class="${codeBlock}">/* build sekali: npm run build:font -w @ordinara/icons */
+import "@ordinara/icons/font.css";</pre></div>
+      </div>
+      <pre class="${codeBlock}">&lt;i class="ori ori-smiley"&gt;&lt;/i&gt;
+&lt;i class="ori-bold ori-smiley"&gt;&lt;/i&gt;
+&lt;i class="ori-fill ori-smiley text-primary-600 text-2xl"&gt;&lt;/i&gt;</pre>
+    </section>
+    <section class="space-y-3"><h3 class="${label}">Katalog class (${oriNames.length})</h3>
+      <input type="search" placeholder="Cari ikon..." aria-label="Cari ikon" oninput="${oriFilter}" class="block h-10 w-full max-w-sm rounded-control border border-border bg-surface px-3.5 text-sm text-fg outline-none placeholder:text-fg-subtle focus:border-primary-600 focus:ring-2 focus:ring-primary-600/20" />
+      <div class="grid grid-cols-3 gap-2 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-9">${catalog}</div>
+    </section>
+    <section class="space-y-3"><h3 class="${label}">Helper icon() (TypeScript)</h3>
+      <p class="max-w-3xl text-sm text-fg-muted">Untuk markup yang dibuat dari kode: menghasilkan SVG inline, tanpa CSS tambahan.</p>
       <div class="grid grid-cols-4 gap-2 sm:grid-cols-6 md:grid-cols-8">${iconNames
         .map(
           (n) =>

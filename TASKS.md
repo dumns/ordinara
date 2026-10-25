@@ -66,6 +66,7 @@ Dokumen ini adalah sumber kebenaran progres pekerjaan. **Wajib diperbarui di PR 
 | 10 | RTL | 2026-10-15 | 2026-10-15 | ✅ | Diverifikasi `dir=rtl` di preview & Storybook; aturan utilitas logis |
 | 11 | Optimization (purge/bundle size) | 2026-10-15 | 2026-10-15 | ✅ | `npm run size` dengan budget CSS 60 kB gzip |
 | 12 | Motion tokens (+ prefers-reduced-motion) | 2026-10-15 |  | ⬜ | Durasi/easing/animasi ada; reduced-motion belum diuji di browser |
+| 13 | Icon classes `ori` (CSS mask + font) | 2026-10-25 | 2026-10-25 | ✅ | `@ordinara/icons`: `ori ori-nama`, `ori-bold`, `ori-fill`. Mask: 220 ikon (~31 kB gzip per bobot, build `build:mask`). Font: 1.512 ikon, woff2 ~127 kB per bobot (build `build:font`, tidak di-commit). Render kedua jalur identik; halaman Icons memuat katalog, cari, dan salin class |
 
 ## 3. Components
 
@@ -180,3 +181,4 @@ Helper TS (fungsi yang menghasilkan markup) dan komponen tambahan yang muncul di
 | 2026-10-15 | Token dan helper ditulis ulang sebagai identitas visual Ordinara. |
 | 2026-10-15 | Identitas Ordinara ditambahkan: logo, font display, halaman Brand identity. |
 | 2026-10-15 | Pustaka komponen di-generate (70 halaman tersedia) dengan rilis bertahap lewat manifest; v0.1.0 memuat 25 halaman inti. Brand disatukan menjadi Ordinara. |
+| 2026-10-25 | Paket `@ordinara/icons` ditambahkan: class `ori` lewat CSS mask dan font, katalog di halaman Icons. |

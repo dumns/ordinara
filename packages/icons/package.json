@@ -1,0 +1,32 @@
+{
+  "name": "@ordinara/icons",
+  "version": "0.1.0",
+  "description": "Ordinara icons: class-based icon set (ori ori-name) as CSS mask or icon font",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    "./mask.css": "./src/mask.css",
+    "./mask/*": "./src/mask/*",
+    "./font.css": "./dist/font/font.css",
+    "./font/*": "./dist/font/*",
+    "./names": "./src/names.ts"
+  },
+  "files": [
+    "src",
+    "dist",
+    "NOTICE"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "build:mask": "node scripts/build-mask.mjs",
+    "build:font": "node scripts/build-font.mjs",
+    "build": "npm run build:mask && npm run build:font"
+  },
+  "devDependencies": {
+    "svg2ttf": "^6.1.0",
+    "svgicons2svgfont": "^15.0.1",
+    "ttf2woff2": "^8.0.1"
+  }
+}
