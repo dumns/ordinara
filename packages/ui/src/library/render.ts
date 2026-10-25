@@ -45,7 +45,7 @@ const tooltipMarkup = /data-(tooltip|popover)-target/;
 function wrapRow(cls: string): string {
   const t = cls.split(/\s+/);
   if (!t.includes("flex") || t.some((c) => c === "flex-col" || c === "flex-wrap" || c.startsWith("grid") || c.endsWith(":flex-col"))) return cls;
-  return cls + " flex-wrap";
+  return cls + " flex-wrap gap-y-3";
 }
 
 /**
@@ -72,7 +72,7 @@ export function renderLibraryExample(ex: LibraryExample): string {
   // Tooltip/popover muncul di luar tombol pemicunya: beri ruang dan jangan dipotong bingkai.
   const scroll = layout ? "overflow:hidden;" : room ? "overflow:visible;" : (height || maxHeight) && !overlay ? "overflow:auto;" : "";
   const contain = overlay ? "" : "transform:translateZ(0);";
-  const raise = !overlay && drawerMarkup.test(ex.html) ? "z-index:10;" : "";
+  const raise = !overlay && drawerMarkup.test(ex.html) ? "z-index:35;" : "";
   const pad = layout ? "h-full" : room ? "px-4 pb-6 pt-16 sm:px-6 sm:pt-20" : "p-4 sm:p-6";
   // Layout penuh yang lebih tinggi dari bingkai: pudarkan tepi bawah agar terpotongnya terlihat disengaja.
   const fade = layout ? "mask-image:linear-gradient(to bottom,#000 calc(100% - 56px),transparent);" : "";
