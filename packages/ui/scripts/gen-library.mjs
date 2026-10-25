@@ -53,8 +53,17 @@ async function source(group, name) {
 }
 
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+/** Potong teks di batas kalimat (atau kata) agar tidak berhenti di tengah kata. */
+const shorten = (text, max = 200) => {
+  if (text.length <= max) return text;
+  const head = text.slice(0, max);
+  const sentence = head.match(/^[\s\S]*[.!?](?=\s|$)/);
+  if (sentence && sentence[0].length >= 60) return sentence[0];
+  return head.replace(/\s+\S*$/, "") + "…";
+};
+
 const clean = (s) =>
-  esc(s.replace(/\{\{<[^>]*>\}\}/g, "").replace(/\[([^\]]+)\]\([^)]*\)/g, "$1"))
+  esc(s.replace(/\{\{<[^>]*>\}\}/g, "").replace(/\[([^\]]+)\]\([^)]*\)/g, "$1").replace(/<a\s[^>]*>([^<]*)<\/a>/g, "$1").replace(/<\/?[a-zA-Z][^>]*>/g, ""))
     .replace(/`([^`]+)`/g, "<code>$1</code>")
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
     .replace(/\s+/g, " ")
@@ -88,6 +97,15 @@ const pictureUri = () => {
 /** Ganti nama/aset sumber dengan brand Ordinara. */
 function brand(text) {
   return text
+    // Jalur relatif ke aset sumber (/docs/images/...): ganti dengan placeholder bergaya Ordinara.
+    .replace(/(src|srcset)="\/docs\/images\/(?:people|users|avatars?)[^"]*"/g, (_, attr) => `${attr}="${avatarUri()}"`)
+    .replace(/(src|srcset)="\/docs\/images\/[^"]*"/g, (_, attr) => `${attr}="${pictureUri()}"`)
+    // Tautan relatif/shortcode/eksternal ke situs sumber -> placeholder "#".
+    .replace(/href="\{\{<[^"]*"/g, 'href="#"')
+    .replace(/href="\/docs\/[^"]*"/g, 'href="#"')
+    .replace(/href="https?:\/\/(?:www\.)?tailwindui\.com[^"]*"/g, 'href="#"')
+    // Salah ketik bawaan sumber.
+    .replace(/agong/g, "ago")
     .replace(/https?:\/\/flowbite\.com\/docs\/images\/logo\.svg/g, LOGO)
     .replace(/https?:\/\/flowbite\.com\/docs\/images\/(?:people|users|avatars?)[^"'\s)]*/g, () => avatarUri())
     .replace(/https?:\/\/flowbite\.com\/docs\/images\/[^"'\s)]*/g, () => pictureUri())
@@ -202,7 +220,7 @@ for (const [group, names] of Object.entries(SOURCES)) {
       join(pagesDir, `${fileId}.ts`),
       `// GENERATED oleh scripts/gen-library.mjs dari sumber dokumentasi komponen (MIT). Jangan edit manual.\nimport type { LibraryPage } from "../types";\n\nconst page: LibraryPage = ${JSON.stringify(page, null, 1)};\n\nexport default page;\n`,
     );
-    registry.push({ id: `${DIR[group]}/${name}`, fileId, group, title: page.title, intro: page.intro.length > 200 ? page.intro.slice(0, 197).replace(/s+S*$/, "") + "…" : page.intro, sections: page.sections.length, examples: count });
+    registry.push({ id: `${DIR[group]}/${name}`, fileId, group, title: page.title, intro: shorten(page.intro, 330), sections: page.sections.length, examples: count });
 
     const used = new Set();
     const storyExports = page.sections.map((s, idx) => {
