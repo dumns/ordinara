@@ -29,7 +29,7 @@ const foundationMeta: Record<string, { icon: IconName; description: string }> = 
   typography: { icon: "type", description: "Skala tipografi dari label micro sampai display, plus monospace." },
   shape: { icon: "shapes", description: "Radius, shadow, spacing grid 4px, dan layering z-index." },
   motion: { icon: "zap", description: "Durasi, easing, dan animasi. Dinolkan saat prefers-reduced-motion." },
-  icons: { icon: "star", description: "Set ikon (regular, bold, fill). Ikon berarah dicerminkan otomatis di RTL." },
+  icons: { icon: "star", description: "Ikon lewat class ori (CSS mask atau font) dan helper icon(): regular, bold, fill." },
   theming: { icon: "swatch-book", description: "Tema brand lewat data-theme dan dark mode lewat .dark; keduanya bisa bersarang." },
   rtl: { icon: "languages", description: "Dukungan right-to-left dengan utilitas logis." },
 };

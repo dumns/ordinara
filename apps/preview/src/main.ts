@@ -1,5 +1,6 @@
 import "@ordinara/ui/fonts.css";
 import "@ordinara/ui/styles.css";
+import "@ordinara/icons/mask.css";
 import { icon, initLibrary, logoDataUri, logoMark } from "@ordinara/ui";
 import { pages, type Page } from "./pages";
 

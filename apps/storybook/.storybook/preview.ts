@@ -3,6 +3,7 @@ import { withThemeByClassName, withThemeByDataAttribute } from "@storybook/addon
 import { initLibrary } from "@ordinara/ui";
 import "@ordinara/ui/fonts.css";
 import "@ordinara/ui/styles.css";
+import "@ordinara/icons/mask.css";
 
 const preview: Preview = {
   globalTypes: {
