@@ -66,8 +66,24 @@ export async function runLibraryScripts(root: ParentNode = document): Promise<vo
   }
 }
 
+let linkGuard = false;
+
+/**
+ * Tautan placeholder (`href="#"`) pada contoh komponen tidak boleh mengubah URL / berpindah halaman,
+ * seperti perilaku umum: klik tidak melakukan navigasi.
+ */
+function guardPlaceholderLinks(): void {
+  if (linkGuard) return;
+  linkGuard = true;
+  document.addEventListener("click", (event) => {
+    const link = (event.target as Element | null)?.closest?.("a[href=\"#\"]");
+    if (link) event.preventDefault();
+  });
+}
+
 /** Aktifkan perilaku komponen di dalam `root`, lalu jalankan skrip contoh. */
 export async function initLibrary(root: ParentNode = document): Promise<void> {
+  guardPlaceholderLinks();
   initFlowbite();
   await runLibraryScripts(root);
 }

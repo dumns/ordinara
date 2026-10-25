@@ -3,7 +3,7 @@ import type { LibraryPage } from "../types";
 
 const page: LibraryPage = {
  "title": "Tooltip",
- "intro": "Ordinara allows you to use the Tailwind CSS tooltip component to show extra information when hovering or focusing over an element in multiple positions, styles, and animations. Before continuing, make sure that you have the &lt;a href=\"\"&gt;Ordinara JavaScript file&lt;/a&gt; included in your project in order to make the tooltip component work.",
+ "intro": "Ordinara allows you to use the Tailwind CSS tooltip component to show extra information when hovering or focusing over an element in multiple positions, styles, and animations. Before continuing, make sure that you have the Ordinara JavaScript file included in your project in order to make the tooltip component work.",
  "sections": [
   {
    "title": "Default tooltip example",

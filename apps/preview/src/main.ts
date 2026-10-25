@@ -105,7 +105,7 @@ shell.innerHTML = `
       </div>
     </header>
     <main id="main" class="flex-1 overflow-y-auto">
-      <div class="mx-auto max-w-5xl space-y-6 px-4 py-8 sm:px-8">
+      <div class="mx-auto max-w-[96rem] space-y-6 px-4 py-8 sm:px-8 lg:px-10">
         <div id="head" class="space-y-1"><h1 id="title" class="font-display text-2xl font-bold tracking-tight"></h1><p id="desc" class="max-w-2xl text-sm text-fg-muted"></p></div>
         <div id="page"></div>
       </div>
@@ -117,12 +117,14 @@ const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as 
 /* ---------- routing ---------- */
 let routeToken = 0;
 async function route() {
+  // Hash selain "#/<halaman>" (mis. "#" dari tautan placeholder) bukan navigasi halaman: abaikan.
+  if (location.hash && !location.hash.startsWith("#/")) return;
   const token = ++routeToken;
   const id = location.hash.replace(/^#\//, "") || "overview";
   const page = pages.find((p) => p.id === id) ?? pages[0]!;
   $("head").classList.toggle("hidden", page.id === "overview");
   $("title").textContent = page.title;
-  $("desc").textContent = page.description;
+  $("desc").innerHTML = page.description;
   $("crumb-group").textContent = page.group;
   $("crumb-title").textContent = page.title;
   $("page").innerHTML = `<p class="py-10 text-sm text-fg-muted">Memuat…</p>`;
