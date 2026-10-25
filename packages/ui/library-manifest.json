@@ -1,0 +1,30 @@
+{
+  "$comment": "Jadwal rilis halaman pustaka komponen. Halaman hanya di-generate/di-commit untuk versi >= nilai 'since'. Halaman yang tidak tercantum = belum dijadwalkan. Naikkan versi paket lalu tambah id di sini untuk merilis komponen berikutnya (MINOR).",
+  "since": {
+    "components/alerts": "0.1.0",
+    "components/avatar": "0.1.0",
+    "components/badge": "0.1.0",
+    "components/breadcrumb": "0.1.0",
+    "components/buttons": "0.1.0",
+    "components/button-group": "0.1.0",
+    "components/card": "0.1.0",
+    "components/dropdowns": "0.1.0",
+    "components/list-group": "0.1.0",
+    "components/modal": "0.1.0",
+    "components/pagination": "0.1.0",
+    "components/progress": "0.1.0",
+    "components/sidebar": "0.1.0",
+    "components/tables": "0.1.0",
+    "components/tabs": "0.1.0",
+    "components/toast": "0.1.0",
+    "components/tooltips": "0.1.0",
+    "forms/input-field": "0.1.0",
+    "forms/search-input": "0.1.0",
+    "forms/select": "0.1.0",
+    "forms/textarea": "0.1.0",
+    "forms/checkbox": "0.1.0",
+    "forms/radio": "0.1.0",
+    "forms/toggle": "0.1.0",
+    "typography/hr": "0.1.0"
+  }
+}

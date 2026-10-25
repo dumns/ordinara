@@ -1,0 +1,67 @@
+/*
+ * Semantic tokens + dark mode.
+ *
+ * Alias dipetakan dengan `@theme inline` agar var() dievaluasi di elemen
+ * pemakai. Dark mode MEMBALIK nilai skala primitive (bukan alias), sehingga
+ * utilitas seperti `bg-neutral-100` atau `text-primary-700` otomatis berganti,
+ * dan container bersarang (`.dark`) juga bekerja. Jangan menambah utilitas
+ * `dark:` ad-hoc; perluas peta override di bawah.
+ *
+ * Dark aktif lewat class `.dark` atau atribut `data-theme="dark"`.
+ */
+
+@theme inline {
+  /* Surface & teks */
+  --color-background: var(--color-neutral-50);
+  --color-fg: var(--color-neutral-900);
+  --color-fg-muted: var(--color-neutral-500);
+  --color-fg-subtle: var(--color-neutral-400);
+  --color-border: var(--color-neutral-200);
+  --color-border-subtle: var(--color-neutral-100);
+  --color-ring: var(--color-primary-500);
+
+  --radius-overlay: var(--radius-frame);
+}
+
+.dark,
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-neutral-50: #0b1120;
+  --color-neutral-100: #1e293b;
+  --color-neutral-200: #263449;
+  --color-neutral-300: #3b4a61;
+  --color-neutral-400: #7c8ba1;
+  --color-neutral-500: #94a3b8;
+  --color-neutral-600: #a9b6c8;
+  --color-neutral-700: #cbd5e1;
+  --color-neutral-800: #e2e8f0;
+  --color-neutral-900: #f1f5f9;
+  --color-neutral-950: #f8fafc;
+
+  --color-surface: #0f172a;
+  --color-brand-soft-mid: #0f1b36;
+
+  --color-primary-50: #14213d;
+  --color-primary-100: #1a2f5a;
+  --color-primary-200: #1e3a7a;
+  --color-primary-700: #98b6f6;
+  --color-primary-800: #c6d7fb;
+  --color-primary-900: #e2ebfd;
+  --color-secondary-50: #2a1a10;
+  --color-secondary-100: #3b2415;
+  --color-secondary-200: #502b11;
+
+  --color-success-50: #06281f;
+  --color-success-100: #0a3a2c;
+  --color-success-700: #6ee7b7;
+  --color-warning-50: #2a1f06;
+  --color-warning-100: #3d2d08;
+  --color-warning-700: #fcd34d;
+  --color-danger-50: #2d1010;
+  --color-danger-100: #451a1a;
+  --color-danger-700: #fca5a5;
+  --color-info-50: #08263a;
+  --color-info-100: #0c3652;
+  --color-info-700: #7dd3fc;
+}
