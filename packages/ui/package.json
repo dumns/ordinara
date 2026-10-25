@@ -25,7 +25,8 @@
     "@ordinara/tokens": "0.1.0",
     "apexcharts": "^4.7.0",
     "flowbite": "^4.0.2",
-    "simple-datatables": "^10.3.0"
+    "simple-datatables": "^10.3.0",
+    "@ordinara/icons": "0.1.0"
   },
   "peerDependencies": {
     "tailwindcss": "^4.3.3"
