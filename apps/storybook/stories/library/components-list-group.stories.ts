@@ -1,6 +1,6 @@
 // GENERATED oleh scripts/gen-library.mjs. Jangan edit manual.
 import type { Meta, StoryObj } from "@storybook/html-vite";
-import { renderLibrarySection } from "@ordinara/ui";
+import { renderLibraryPage, renderLibrarySection } from "@ordinara/ui";
 import page from "@ordinara/ui/library/components-list-group";
 
 const meta: Meta = { title: "Components/List Group" };
@@ -8,6 +8,7 @@ export default meta;
 
 type Story = StoryObj;
 
+export const Gallery: Story = { name: "Gallery", render: () => renderLibraryPage(page) };
 export const DefaultListGroup: Story = { name: "Default list group", render: () => renderLibrarySection(page.sections[0]!) };
 export const ListGroupWithLinks: Story = { name: "List group with links", render: () => renderLibrarySection(page.sections[1]!) };
 export const ListGroupWithButtons: Story = { name: "List group with buttons", render: () => renderLibrarySection(page.sections[2]!) };

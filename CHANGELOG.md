@@ -18,6 +18,7 @@ Rilis dilakukan bertahap: setiap versi hanya memuat komponen yang dijadwalkan un
 - Jembatan token komponen (`@ordinara/tokens/compat.css`): token semantik komponen dipetakan ke skala Ordinara; dark mode dan tema ikut bekerja.
 - Foundation (`@ordinara/tokens`): skala warna primary/secondary/neutral/success/warning/danger/info (50–950), semantic (`background`, `surface`, `fg`, `fg-muted`, `fg-subtle`, `border`, `ring`), radius (`control`, `card`, `check`, `frame`), tipografi (`text-btn-lg`, `text-micro`), shadow (`card`, `card-lg`, `glow-primary`), z-index, motion (`ease-out-soft`, `fade-in`, `spin-slow`, `flag-in/out`), reduced-motion.
 - Font Ordinara (opsional via `@ordinara/ui/fonts.css`) dan set ikon (regular/bold/fill) lewat `icon()`.
+- **Story "Gallery"** di urutan pertama setiap komponen pustaka di Storybook: menampilkan seluruh section dan contohnya sekaligus, lalu diikuti story per section.
 - **Paket `@ordinara/icons`**: ikon lewat class `ori ori-nama` (`ori-bold`, `ori-fill`) dengan dua jalur bernama sama: CSS mask (220 ikon, ~31 kB gzip per bobot, bisa dimuat per bobot) dan font (seluruh 1.512 ikon, woff2 per bobot, codepoint stabil). Ikon berarah dicerminkan pada RTL. Halaman Icons memuat katalog dengan pencarian dan salin class.
 - Dark mode (`.dark` atau `data-theme="dark"`) dengan membalik skala primitive; tema brand `data-theme` (violet, emerald); dukungan RTL.
 - Utilitas brand: `bg-shell`, `bg-brand-gradient`, `bg-brand-gradient-soft`, `scrollbar-none`.
