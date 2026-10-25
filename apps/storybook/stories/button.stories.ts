@@ -16,8 +16,8 @@ export default meta;
 
 type Story = StoryObj<ButtonProps>;
 
+export const Gallery: Story = { render: renderButtonDemo };
 export const Playground: Story = {};
 export const WithIconEnd: Story = { args: { label: "Pilih paket", iconStart: undefined, iconEnd: "arrow-right" } };
 export const Outline: Story = { args: { label: "Bantuan", variant: "outline", iconStart: "circle-help" } };
 export const Loading: Story = { args: { label: "Memuat…", loading: true, iconStart: undefined } };
-export const Gallery: Story = { render: renderButtonDemo };

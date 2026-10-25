@@ -13,5 +13,5 @@ export default meta;
 
 type Story = StoryObj<BadgeProps>;
 
-export const Playground: Story = {};
 export const Gallery: Story = { render: renderBadgeDemo };
+export const Playground: Story = {};
