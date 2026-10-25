@@ -17,7 +17,7 @@ export default meta;
 
 type Story = StoryObj<CardProps>;
 
+export const Gallery: Story = { render: renderCardDemo };
 export const Playground: Story = {};
 export const WithButton: Story = { args: { title: "Lengkapi pengaturan", buttonLabel: "Lanjutkan" } };
 export const WithLink: Story = { args: { title: "Panduan penggunaan", link: "Baca selengkapnya", badgeLabel: "Panduan", hoverable: true } };
-export const Gallery: Story = { render: renderCardDemo };
