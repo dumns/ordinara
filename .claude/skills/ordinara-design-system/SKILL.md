@@ -162,6 +162,7 @@ Aturan praktis:
 - Kolom *Ditambahkan* diisi tanggal komponen **dibuat**; kosongkan selama belum dibuat. *Selesai* diisi saat semua kolom terpenuhi.
 - Komponen baru yang muncul di tengah jalan wajib ditambahkan ke bagian "Helpers & tambahan" (tanggal *Ditambahkan* sesuai saat dibuat) dan dicatat di "Log perubahan daftar".
 - Perbarui tabel Ringkasan dan `TASKS.md` di PR yang sama dengan perubahannya.
+- **Catat setiap perbaikan/bug**: tambahkan ke `CHANGELOG.md` (bagian Fixed; yang belum selesai ke Known issues) dan baris baru di tabel "Log perubahan daftar" pada `TASKS.md`, dalam commit yang sama dengan perbaikannya. Regresi dari perbaikan sebelumnya ikut dicatat.
 
 ## Preview HTML & Storybook (wajib, harus sinkron)
 
