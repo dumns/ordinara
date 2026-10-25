@@ -1,6 +1,6 @@
 // GENERATED oleh scripts/gen-library.mjs. Jangan edit manual.
 import type { Meta, StoryObj } from "@storybook/html-vite";
-import { renderLibrarySection } from "@ordinara/ui";
+import { renderLibraryPage, renderLibrarySection } from "@ordinara/ui";
 import page from "@ordinara/ui/library/forms-select";
 
 const meta: Meta = { title: "Forms/Select" };
@@ -8,6 +8,7 @@ export default meta;
 
 type Story = StoryObj;
 
+export const Gallery: Story = { name: "Gallery", render: () => renderLibraryPage(page) };
 export const SelectInputExample: Story = { name: "Select input example", render: () => renderLibrarySection(page.sections[0]!) };
 export const MultipleOptions: Story = { name: "Multiple options", render: () => renderLibrarySection(page.sections[1]!) };
 export const SizeAttribute: Story = { name: "Size attribute", render: () => renderLibrarySection(page.sections[2]!) };

@@ -1,6 +1,6 @@
 // GENERATED oleh scripts/gen-library.mjs. Jangan edit manual.
 import type { Meta, StoryObj } from "@storybook/html-vite";
-import { renderLibrarySection } from "@ordinara/ui";
+import { renderLibraryPage, renderLibrarySection } from "@ordinara/ui";
 import page from "@ordinara/ui/library/components-tables";
 
 const meta: Meta = { title: "Components/Table" };
@@ -8,6 +8,7 @@ export default meta;
 
 type Story = StoryObj;
 
+export const Gallery: Story = { name: "Gallery", render: () => renderLibraryPage(page) };
 export const DefaultTable: Story = { name: "Default table", render: () => renderLibrarySection(page.sections[0]!) };
 export const StripedRows: Story = { name: "Striped rows", render: () => renderLibrarySection(page.sections[1]!) };
 export const StripedColumns: Story = { name: "Striped columns", render: () => renderLibrarySection(page.sections[2]!) };
