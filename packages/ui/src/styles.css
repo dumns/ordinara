@@ -279,3 +279,27 @@ input.peer:not(:checked):not(:disabled) + div.bg-neutral-quaternary {
 :is(input, textarea, select)[class*="border-default-medium"]:not(:focus):not(:disabled):not([class*="border-danger"]):not([class*="border-success"]) {
   border-color: var(--color-neutral-300);
 }
+
+/* Demo di layar sempit: elemen kecil tidak boleh tertekan/terpotong. */
+.ord-demo [class*="rounded"][class*="text-xs"][class*="font-medium"]:not(button),
+.ord-demo button:not([class*="w-full"]),
+.ord-demo a[class*="rounded"][class*="px-"]:not([class*="w-full"]) {
+  white-space: nowrap;
+}
+/* Track toggle tidak boleh menyusut jadi lonjong. */
+label > input.peer + div[class*="rounded-full"] {
+  flex-shrink: 0;
+}
+/* Baris rata-tengah yang melebihi lebar tidak memotong sisi kiri; bisa digeser. */
+.ord-demo .justify-center {
+  justify-content: safe center;
+}
+/* Contoh yang lebih lebar dari layar bisa digeser, bukan terpotong. */
+.ord-demo {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+/* Lebar tetap (w-64 ... w-112) tidak boleh melebihi bingkai di layar sempit. */
+.ord-demo :is(.w-112, .w-96, .w-80, .w-72, .w-64) {
+  max-width: 100%;
+}
