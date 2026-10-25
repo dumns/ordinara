@@ -1,6 +1,6 @@
 // GENERATED oleh scripts/gen-library.mjs. Jangan edit manual.
 import type { Meta, StoryObj } from "@storybook/html-vite";
-import { renderLibrarySection } from "@ordinara/ui";
+import { renderLibraryPage, renderLibrarySection } from "@ordinara/ui";
 import page from "@ordinara/ui/library/components-pagination";
 
 const meta: Meta = { title: "Components/Pagination" };
@@ -8,6 +8,7 @@ export default meta;
 
 type Story = StoryObj;
 
+export const Gallery: Story = { name: "Gallery", render: () => renderLibraryPage(page) };
 export const DefaultPagination: Story = { name: "Default pagination", render: () => renderLibrarySection(page.sections[0]!) };
 export const PaginationWithIcons: Story = { name: "Pagination with icons", render: () => renderLibrarySection(page.sections[1]!) };
 export const PreviousAndNext: Story = { name: "Previous and next", render: () => renderLibrarySection(page.sections[2]!) };

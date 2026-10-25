@@ -222,7 +222,7 @@ for (const [group, names] of Object.entries(SOURCES)) {
     );
     registry.push({ id: `${DIR[group]}/${name}`, fileId, group, title: page.title, intro: shorten(page.intro, 330), sections: page.sections.length, examples: count });
 
-    const used = new Set();
+    const used = new Set(["Gallery"]);
     const storyExports = page.sections.map((s, idx) => {
       let ex = pascal(s.title);
       while (used.has(ex)) ex += "X";
@@ -231,7 +231,7 @@ for (const [group, names] of Object.entries(SOURCES)) {
     });
     writeFileSync(
       join(storiesDir, `${fileId}.stories.ts`),
-      `// GENERATED oleh scripts/gen-library.mjs. Jangan edit manual.\nimport type { Meta, StoryObj } from "@storybook/html-vite";\nimport { renderLibrarySection } from "@ordinara/ui";\nimport page from "@ordinara/ui/library/${fileId}";\n\nconst meta: Meta = { title: ${JSON.stringify(`${group}/${page.title}`)} };\nexport default meta;\n\ntype Story = StoryObj;\n\n${storyExports.join("\n")}\n`,
+      `// GENERATED oleh scripts/gen-library.mjs. Jangan edit manual.\nimport type { Meta, StoryObj } from "@storybook/html-vite";\nimport { renderLibraryPage, renderLibrarySection } from "@ordinara/ui";\nimport page from "@ordinara/ui/library/${fileId}";\n\nconst meta: Meta = { title: ${JSON.stringify(`${group}/${page.title}`)} };\nexport default meta;\n\ntype Story = StoryObj;\n\nexport const Gallery: Story = { name: "Gallery", render: () => renderLibraryPage(page) };\n${storyExports.join("\n")}\n`,
     );
   }
 }

@@ -1,6 +1,6 @@
 // GENERATED oleh scripts/gen-library.mjs. Jangan edit manual.
 import type { Meta, StoryObj } from "@storybook/html-vite";
-import { renderLibrarySection } from "@ordinara/ui";
+import { renderLibraryPage, renderLibrarySection } from "@ordinara/ui";
 import page from "@ordinara/ui/library/components-modal";
 
 const meta: Meta = { title: "Components/Modal" };
@@ -8,6 +8,7 @@ export default meta;
 
 type Story = StoryObj;
 
+export const Gallery: Story = { name: "Gallery", render: () => renderLibraryPage(page) };
 export const DefaultModal: Story = { name: "Default modal", render: () => renderLibrarySection(page.sections[0]!) };
 export const StaticModal: Story = { name: "Static modal", render: () => renderLibrarySection(page.sections[1]!) };
 export const PopUpModal: Story = { name: "Pop-up modal", render: () => renderLibrarySection(page.sections[2]!) };

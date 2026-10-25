@@ -1,6 +1,6 @@
 // GENERATED oleh scripts/gen-library.mjs. Jangan edit manual.
 import type { Meta, StoryObj } from "@storybook/html-vite";
-import { renderLibrarySection } from "@ordinara/ui";
+import { renderLibraryPage, renderLibrarySection } from "@ordinara/ui";
 import page from "@ordinara/ui/library/forms-search-input";
 
 const meta: Meta = { title: "Forms/Search Input" };
@@ -8,6 +8,7 @@ export default meta;
 
 type Story = StoryObj;
 
+export const Gallery: Story = { name: "Gallery", render: () => renderLibraryPage(page) };
 export const SearchBarExample: Story = { name: "Search bar example", render: () => renderLibrarySection(page.sections[0]!) };
 export const SearchWithDropdown: Story = { name: "Search with dropdown", render: () => renderLibrarySection(page.sections[1]!) };
 export const SimpleSearchInput: Story = { name: "Simple search input", render: () => renderLibrarySection(page.sections[2]!) };
