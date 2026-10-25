@@ -1,6 +1,6 @@
 // GENERATED oleh scripts/gen-library.mjs. Jangan edit manual.
 import type { Meta, StoryObj } from "@storybook/html-vite";
-import { renderLibrarySection } from "@ordinara/ui";
+import { renderLibraryPage, renderLibrarySection } from "@ordinara/ui";
 import page from "@ordinara/ui/library/forms-radio";
 
 const meta: Meta = { title: "Forms/Radio" };
@@ -8,6 +8,7 @@ export default meta;
 
 type Story = StoryObj;
 
+export const Gallery: Story = { name: "Gallery", render: () => renderLibraryPage(page) };
 export const RadioExample: Story = { name: "Radio example", render: () => renderLibrarySection(page.sections[0]!) };
 export const DisabledState: Story = { name: "Disabled state", render: () => renderLibrarySection(page.sections[1]!) };
 export const RadioLink: Story = { name: "Radio link", render: () => renderLibrarySection(page.sections[2]!) };

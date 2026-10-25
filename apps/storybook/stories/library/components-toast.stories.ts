@@ -1,6 +1,6 @@
 // GENERATED oleh scripts/gen-library.mjs. Jangan edit manual.
 import type { Meta, StoryObj } from "@storybook/html-vite";
-import { renderLibrarySection } from "@ordinara/ui";
+import { renderLibraryPage, renderLibrarySection } from "@ordinara/ui";
 import page from "@ordinara/ui/library/components-toast";
 
 const meta: Meta = { title: "Components/Toast" };
@@ -8,6 +8,7 @@ export default meta;
 
 type Story = StoryObj;
 
+export const Gallery: Story = { name: "Gallery", render: () => renderLibraryPage(page) };
 export const DefaultToast: Story = { name: "Default toast", render: () => renderLibrarySection(page.sections[0]!) };
 export const Colors: Story = { name: "Colors", render: () => renderLibrarySection(page.sections[1]!) };
 export const SimpleToast: Story = { name: "Simple toast", render: () => renderLibrarySection(page.sections[2]!) };

@@ -1,6 +1,6 @@
 // GENERATED oleh scripts/gen-library.mjs. Jangan edit manual.
 import type { Meta, StoryObj } from "@storybook/html-vite";
-import { renderLibrarySection } from "@ordinara/ui";
+import { renderLibraryPage, renderLibrarySection } from "@ordinara/ui";
 import page from "@ordinara/ui/library/components-card";
 
 const meta: Meta = { title: "Components/Cards" };
@@ -8,6 +8,7 @@ export default meta;
 
 type Story = StoryObj;
 
+export const Gallery: Story = { name: "Gallery", render: () => renderLibraryPage(page) };
 export const DefaultCard: Story = { name: "Default card", render: () => renderLibrarySection(page.sections[0]!) };
 export const CardWithButton: Story = { name: "Card with button", render: () => renderLibrarySection(page.sections[1]!) };
 export const CardWithLink: Story = { name: "Card with link", render: () => renderLibrarySection(page.sections[2]!) };
