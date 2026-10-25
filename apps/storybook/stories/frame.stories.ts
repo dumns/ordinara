@@ -15,5 +15,5 @@ export default meta;
 
 type Story = StoryObj<FrameProps>;
 
-export const Playground: Story = {};
 export const Gallery: Story = { render: renderFrameDemo };
+export const Playground: Story = {};
