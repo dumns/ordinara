@@ -182,3 +182,10 @@ Helper TS (fungsi yang menghasilkan markup) dan komponen tambahan yang muncul di
 | 2026-10-15 | Identitas Ordinara ditambahkan: logo, font display, halaman Brand identity. |
 | 2026-10-15 | Pustaka komponen di-generate (70 halaman tersedia) dengan rilis bertahap lewat manifest; v0.1.0 memuat 25 halaman inti. Brand disatukan menjadi Ordinara. |
 | 2026-10-25 | Paket `@ordinara/icons` ditambahkan: class `ori` lewat CSS mask dan font, katalog di halaman Icons. |
+| 2026-10-15 | Perbaikan: tautan placeholder tidak lagi ke Overview; contoh sidebar/navbar dikurung bingkai; select/dropdown di-style; aset dan deskripsi hasil generator dibersihkan. |
+| 2026-10-25 | Perbaikan form: checkbox, radio, toggle (mati), dan border input/textarea/select lebih terlihat. |
+| 2026-10-25 | Storybook: Gallery di urutan pertama untuk 25 komponen pustaka dan 4 story tulis-tangan (Badge, Button, Card, Frame). |
+| 2026-10-25 | Preview: area konten dilebarkan dan sidebar menjadi teks tanpa ikon. |
+| 2026-10-25 | Perbaikan layar sempit (uji di perangkat): baris membungkus, badge/tombol/toggle tidak penyok, tooltip tidak terpotong, tombol form jadi ikon, pagination membungkus, contoh lebar bisa digeser. |
+| 2026-10-25 | Perbaikan drawer: contoh di atas backdrop dan di bawah menu aplikasi (sempat regresi z-index, sudah diperbaiki). |
+| 2026-10-25 | Masih terbuka: search/sort tabel, galat konsol modal di Table, Breadcrumb dropdown di mobile, warna toggle Colors, peninjauan visual halaman tersisa dan dark mode. |

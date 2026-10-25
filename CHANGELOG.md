@@ -39,3 +39,16 @@ Rilis dilakukan bertahap: setiap versi hanya memuat komponen yang dijadwalkan un
 - Tautan placeholder (`href="#"`) pada contoh komponen tidak lagi berpindah ke halaman Overview: klik tidak melakukan navigasi, dan router preview mengabaikan hash selain `#/<halaman>`.
 - Contoh sidebar/navbar yang memakai posisi `fixed` dan atribut drawer sekarang dikurung di dalam bingkai contohnya, tidak lagi menimpa sidebar preview. Hanya contoh modal yang dirender tanpa pengurungan.
 - Select: dropdown `<select>` biasa kini memakai popup yang di-style penuh (kartu membulat, bayangan, opsi lega, opsi terpilih berwarna primary dengan centang) lewat `appearance: base-select` (browser lama jatuh ke tampilan bawaan); listbox (`multiple`/`size`) memakai opsi lega dengan warna terpilih primary, bukan abu bawaan OS.
+- Hasil generator pustaka dibersihkan: jalur aset relatif (`/docs/images/...`) diganti placeholder bergaya Ordinara sehingga gambar tidak rusak, HTML mentah dibuang dari deskripsi, ringkasan dipotong di batas kalimat, dan salah ketik bawaan sumber ("agong") diperbaiki.
+- Form: kotak checkbox dan lingkaran radio yang belum dipilih kini terlihat jelas (latar putih, border tegas, hover biru); track toggle yang mati lebih tegas dari latar kartu; border input, textarea, dan select lebih terbaca dan tetap berubah saat fokus.
+- Storybook: story **Gallery** kini berada di urutan pertama setiap komponen, juga pada Badge, Button, Card, dan Frame yang sebelumnya menaruhnya paling bawah.
+- Preview: area konten dilebarkan (maks 96rem) dan sidebar menjadi daftar teks tanpa ikon; tombol ciutkan menyembunyikan sidebar sepenuhnya (dibuka lagi lewat tombol menu atau Cmd/Ctrl+K).
+- Layar sempit (hasil uji di perangkat): baris contoh yang terlalu lebar kini membungkus dengan jarak vertikal, badge dan tombol tidak lagi terlipat ("2 / mins / ago"), track toggle tidak lonjong, kartu berlebar tetap dibatasi bingkai, contoh yang lebih lebar dari layar bisa digeser alih-alih terpotong, padding contoh dikecilkan, contoh tooltip dan popover diberi ruang sehingga tidak terpotong card, tombol berikon pada form (Search, kategori, negara) menjadi ikon saja di bawah breakpoint `sm` (label tetap untuk pembaca layar), pagination dengan dropdown atau input membungkus, dan blok kode di halaman Icons tidak meluap.
+- Contoh drawer/sidebar: bingkainya berada di atas backdrop drawer (z-35 vs z-30) dan di bawah menu aplikasi (z-40). Sempat turun ke z-10 sehingga panel contoh tertimpa backdrop; sudah dikembalikan. Menu aplikasi di mobile tidak lagi tertimpa contoh sidebar.
+- `npm run size` menghitung ikon mask terpisah dari budget CSS komponen (60 kB gzip).
+
+### Known issues
+- Pencarian dan sortir tabel belum berfungsi: contoh tabel berupa markup statis (menunggu keputusan: halaman Datatables atau skrip perilaku).
+- Contoh tabel "Table with modal" menimbulkan galat konsol `Modal with id crud-modal does not exist` karena memanggil modal yang didefinisikan di contoh lain (sudah ada sebelum perbaikan mobile).
+- Breadcrumb dengan dropdown masih lebih lebar dari layar di mobile (bisa digeser, belum diringkas menjadi ikon).
+- Warna toggle "Colors" masih warna bawaan contoh, belum diselaraskan dengan palet Ordinara.
