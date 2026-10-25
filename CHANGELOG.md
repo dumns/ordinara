@@ -32,3 +32,8 @@ Rilis dilakukan bertahap: setiap versi hanya memuat komponen yang dijadwalkan un
 - Radius mengikuti skala komponen (`rounded-sm` 6px, `rounded-lg` 16px, `rounded-base` 12px) agar layout contoh identik.
 - Alias semantic lama (`surface-sunken`, `text-default`, `accent`, `*-subtle`, dst.) dihapus; pakai skala (`neutral-*`, `primary-*`) atau token `fg`, `border`, `background`.
 - `styles.css` hanya memindai source Ordinara dan bundel JS plugin (tidak seluruh paket plugin).
+
+### Fixed
+- Tautan placeholder (`href="#"`) pada contoh komponen tidak lagi berpindah ke halaman Overview: klik tidak melakukan navigasi, dan router preview mengabaikan hash selain `#/<halaman>`.
+- Contoh sidebar/navbar yang memakai posisi `fixed` dan atribut drawer sekarang dikurung di dalam bingkai contohnya, tidak lagi menimpa sidebar preview. Hanya contoh modal yang dirender tanpa pengurungan.
+- Select: dropdown `<select>` biasa kini memakai popup yang di-style penuh (kartu membulat, bayangan, opsi lega, opsi terpilih berwarna primary dengan centang) lewat `appearance: base-select` (browser lama jatuh ke tampilan bawaan); listbox (`multiple`/`size`) memakai opsi lega dengan warna terpilih primary, bukan abu bawaan OS.

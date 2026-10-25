@@ -116,6 +116,7 @@ Nilai berikut adalah identitas visual Ordinara (di `@ordinara/tokens`). Setiap k
 - **Sudut membulat biasa (sirkular)**, bukan squircle: sudut squircle membuat tombol dan kartu terlihat kotak. Radius hanya lewat token (`rounded-control`, `rounded-card`, `rounded-frame`).
 - **Metrik font dikoreksi** (`ascent/descent-override` di `fonts.css`) supaya teks terlihat berada di tengah vertikal tombol, badge, dan input; jangan mengakalinya dengan padding atas/bawah yang berbeda.
 - Komponen dan tombol mengikuti nilai acuan di bawah **persis** (ukuran, warna, shadow, state). Jangan menambah efek tambahan pada tombol (kilau, glow, gerak angkat) atau dekorasi pada card (penanda sudut, indeks, pola latar).
+- **Kontrol native** (select, dll.) dipoles lewat CSS global agar konsisten: popup `<select>` memakai `appearance: base-select` (dengan fallback), opsi terpilih berwarna `primary`. Jangan membiarkan tampilan abu bawaan OS pada listbox atau popup.
 - **Efek tekan tombol hanya satu**: `scale(0.98)` lewat `transform` di `styles.css` (dengan transisi dan `will-change` saat hover/fokus/tekan). Gerakan halus teks saat hover (akibat `will-change`) disengaja dan disukai pengguna: jangan dihapus. Jangan menambah `active:scale-*` Tailwind di markup atau komponen: properti `scale`-nya tidak ikut ditransisikan sehingga melompat dan bertumpuk dengan efek global.
 - Jangan memakai `primary-800` untuk latar gelap yang harus tetap gelap di dark mode (skala itu dibalik); pakai `hover-primary` atau nilai literal.
 
