@@ -11,6 +11,7 @@ apps/
   storybook/    Storybook 10 (html-vite)
 packages/
   tokens/       @ordinara/tokens  - skala warna, semantic, tema, radius, shadow, animasi
+  icons/        @ordinara/icons   - ikon lewat class `ori ori-nama` (CSS mask atau font)
   ui/           @ordinara/ui      - CSS, font, helper komponen, pustaka komponen
 scripts/        Skrip repo (laporan ukuran, dll.)
 CHANGELOG.md    Riwayat rilis

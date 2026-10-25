@@ -49,6 +49,13 @@ npm run gen:icons -w @ordinara/ui     # ikon Phosphor -> icons.generated.ts
 npm run gen:library -w @ordinara/ui   # halaman pustaka, registry, story, safelist.css
 ```
 
+Ikon `ori` (paket `@ordinara/icons`):
+
+```bash
+npm run build:mask -w @ordinara/icons   # src/mask/*.css dari icon-set.json (di-commit)
+npm run build:font -w @ordinara/icons   # dist/font/* (semua ikon, tidak di-commit, ~16 detik)
+```
+
 Catatan:
 
 - `gen:library` mengambil dokumen sumber ke `packages/ui/.cache/library-docs` (di-gitignore), jadi butuh koneksi internet pada run pertama.
