@@ -154,19 +154,19 @@ export function renderIcons(): string {
       <div class="${card} flex flex-wrap items-end gap-6 text-fg">${sizeRow}</div>
     </section>
     <section class="space-y-3"><h3 class="${label}">Dua jalur, nama class sama</h3>
-      <div class="grid gap-3 lg:grid-cols-2">
+      <div class="grid gap-3 lg:grid-cols-2 [&>*]:min-w-0">
         <div class="space-y-2"><div class="text-sm font-semibold">CSS mask: ringan, hanya ikon terdaftar</div>
-          <pre class="${codeBlock}">/* semua bobot */
+          <pre class="${codeBlock} max-w-full">/* semua bobot */
 import "@ordinara/icons/mask.css";
 
 /* satu bobot saja (~31 kB gzip) */
 import "@ordinara/icons/mask/base.css";
 import "@ordinara/icons/mask/regular.css";</pre></div>
         <div class="space-y-2"><div class="text-sm font-semibold">Font: seluruh ikon (1.512), dimuat saat dipakai</div>
-          <pre class="${codeBlock}">/* build sekali: npm run build:font -w @ordinara/icons */
+          <pre class="${codeBlock} max-w-full">/* build sekali: npm run build:font -w @ordinara/icons */
 import "@ordinara/icons/font.css";</pre></div>
       </div>
-      <pre class="${codeBlock}">&lt;i class="ori ori-smiley"&gt;&lt;/i&gt;
+      <pre class="${codeBlock} max-w-full">&lt;i class="ori ori-smiley"&gt;&lt;/i&gt;
 &lt;i class="ori-bold ori-smiley"&gt;&lt;/i&gt;
 &lt;i class="ori-fill ori-smiley text-primary-600 text-2xl"&gt;&lt;/i&gt;</pre>
     </section>
