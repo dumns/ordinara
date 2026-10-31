@@ -7,6 +7,25 @@
   "exports": {
     "./tokens.css": "./src/tokens.css"
   },
-  "files": ["src"],
-  "sideEffects": ["*.css"]
+  "files": [
+    "src"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dumns/ordinara.git",
+    "directory": "packages/tokens"
+  },
+  "homepage": "https://github.com/dumns/ordinara#readme",
+  "bugs": {
+    "url": "https://github.com/dumns/ordinara/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=22"
+  }
 }
