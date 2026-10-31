@@ -1,0 +1,28 @@
+{
+  "name": "ordinara",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Ordinara design system",
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev:storybook": "npm run dev -w @ordinara/storybook",
+    "dev:preview": "npm run dev -w @ordinara/preview",
+    "build:storybook": "npm run build -w @ordinara/storybook",
+    "build:preview": "npm run build -w @ordinara/preview",
+    "build": "npm run build:preview && npm run build:storybook",
+    "typecheck": "tsc -b",
+    "size": "node scripts/size-report.mjs",
+    "build:packages": "npm run build -w @ordinara/icons -w @ordinara/ui",
+    "pack:check": "npm pack --dry-run --workspace @ordinara/tokens --workspace @ordinara/icons --workspace @ordinara/ui"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  }
+}

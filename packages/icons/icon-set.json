@@ -1,0 +1,30 @@
+{
+  "_": "Daftar ikon untuk jalur CSS mask (ori.mask). Tambahkan nama Phosphor di sini lalu jalankan: npm run build:mask -w @ordinara/icons. Jalur font memuat seluruh ikon.",
+  "names": [
+    "house", "squares-four", "book-open", "users", "user", "robot", "sparkle", "gear", "question", "shield",
+    "bell", "magnifying-glass", "list", "dots-three", "dots-three-vertical", "sidebar-simple", "sign-out", "sign-in", "sun", "moon",
+    "caret-down", "caret-up", "caret-left", "caret-right", "caret-double-left", "caret-double-right",
+    "arrow-up", "arrow-down", "arrow-left", "arrow-right", "arrow-up-right", "arrow-square-out", "arrows-clockwise",
+    "x", "check", "plus", "minus", "pencil-simple", "trash", "copy", "download-simple", "upload-simple", "funnel",
+    "eye", "eye-slash", "info", "check-circle", "warning-circle", "warning", "x-circle", "spinner", "calendar-blank", "clock",
+    "star", "chart-bar", "chart-line-up", "chart-pie", "qr-code", "palette", "text-aa", "shapes", "lightning", "swatches",
+    "translate", "cursor-click", "package", "command",
+    "smiley", "smiley-sad", "heart", "bookmark-simple", "share-network", "link", "link-simple", "paperclip", "image", "file",
+    "file-text", "folder", "folder-open", "envelope-simple", "phone", "chat-circle", "chat-text", "paper-plane-tilt",
+    "lock", "lock-open", "key", "fingerprint", "user-circle", "user-plus", "user-minus", "users-three", "identification-card",
+    "shopping-cart", "shopping-bag", "credit-card", "wallet", "receipt", "tag", "gift", "storefront", "currency-dollar",
+    "map-pin", "globe", "compass", "buildings", "briefcase", "graduation-cap", "certificate", "trophy", "flag", "target",
+    "bell-ringing", "bell-slash", "megaphone", "lightbulb", "rocket-launch", "fire", "leaf", "flask", "bug", "code",
+    "terminal-window", "brackets-curly", "database", "cloud", "cloud-arrow-up", "wifi-high", "battery-full", "plug",
+    "play", "pause", "stop", "skip-forward", "skip-back", "speaker-high", "speaker-slash", "microphone", "camera", "video-camera",
+    "printer", "desktop", "laptop", "device-mobile", "monitor", "keyboard", "mouse",
+    "sliders-horizontal", "faders", "toggle-left", "toggle-right", "checks", "check-square", "square", "circle", "radio-button",
+    "list-bullets", "list-numbers", "list-checks", "text-align-left", "text-align-center", "text-align-right", "text-b", "text-italic", "text-underline",
+    "table", "kanban", "columns", "rows", "grid-four", "layout", "sidebar", "app-window", "browser", "stack",
+    "arrow-counter-clockwise", "arrow-clockwise", "arrows-left-right", "arrows-in", "arrows-out", "magnifying-glass-plus", "magnifying-glass-minus",
+    "trend-up", "trend-down", "chart-donut", "chart-polar", "calendar-check", "calendar-plus", "timer", "hourglass", "alarm",
+    "thumbs-up", "thumbs-down", "hand-waving", "hand-pointing", "bookmarks", "bookmark", "push-pin", "notepad", "note-pencil",
+    "scissors", "paint-brush", "eyedropper", "pen-nib", "crop", "selection", "magic-wand", "dice-five", "puzzle-piece", "plus-circle",
+    "minus-circle", "question", "prohibit", "seal-check", "shield-check", "shield-warning", "lifebuoy", "headset", "handshake", "medal"
+  ]
+}

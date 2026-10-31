@@ -1,0 +1,54 @@
+{
+  "name": "@ordinara/icons",
+  "version": "0.1.0",
+  "description": "Ordinara icons: class-based icon set (ori ori-name) as CSS mask or icon font",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    "./mask.css": "./src/mask.css",
+    "./mask/*": "./src/mask/*",
+    "./font.css": "./dist/font/font.css",
+    "./font/*": "./dist/font/*",
+    "./names": {
+      "source": "./src/names.ts",
+      "types": "./dist/names.d.ts",
+      "import": "./dist/names.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "NOTICE"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "build:mask": "node scripts/build-mask.mjs",
+    "build:font": "node scripts/build-font.mjs",
+    "build:js": "tsup",
+    "build": "npm run build:js && npm run build:font",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "svg2ttf": "^6.1.0",
+    "svgicons2svgfont": "^15.0.1",
+    "tsup": "^9.0.0",
+    "ttf2woff2": "^8.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dumns/ordinara.git",
+    "directory": "packages/icons"
+  },
+  "homepage": "https://github.com/dumns/ordinara#readme",
+  "bugs": {
+    "url": "https://github.com/dumns/ordinara/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
