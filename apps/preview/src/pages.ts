@@ -10,7 +10,7 @@ import {
   renderLibraryPage,
   renderFrameDemo,
   type IconName,
-} from "@ordinara/ui";
+} from "@dumns/ordinara";
 
 export type PageGroup = "Overview" | "Foundation" | "Helpers" | "Components" | "Forms" | "Typography" | "Plugins";
 

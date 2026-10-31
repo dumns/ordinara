@@ -1,7 +1,7 @@
 // Menghasilkan font ikon Ordinara (jalur font) dari SVG Phosphor (MIT): seluruh ikon, 3 bobot.
 // Output (dist/font, tidak di-commit): ordinara-icons{,-bold,-fill}.woff2 + font.css (class "ori ori-<nama>").
 // Codepoint disimpan di codepoints.json (di-commit) agar stabil antar versi.
-// Jalankan: npm run build:font -w @ordinara/icons
+// Jalankan: npm run build:font -w @dumns/ordinara-icons
 import { createReadStream, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";

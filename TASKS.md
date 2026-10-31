@@ -6,8 +6,8 @@ Dokumen ini adalah sumber kebenaran progres pekerjaan. **Wajib diperbarui di PR 
 
 - Centang (✅) hanya setelah dikerjakan **dan** diverifikasi (bukan sekadar ditulis).
 - **Rilis bertahap**: satu versi hanya memuat komponen yang dijadwalkan di `packages/ui/library-manifest.json` (kolom *Versi*). Versi saat ini: **0.1.0** (komponen inti). Komponen lain menyusul di versi berikutnya (MINOR).
-- Halaman pustaka di-generate (`npm run gen:library -w @ordinara/ui`); jangan diedit manual. Komponen baru di luar pustaka ditambahkan ke bagian 7.
-- Kolom *Code*: data/markup di `@ordinara/ui`. *HTML Preview*: halaman `apps/preview`. *Storybook*: story di `apps/storybook`. Ketiganya berasal dari satu sumber.
+- Halaman pustaka di-generate (`npm run gen:library -w @dumns/ordinara`); jangan diedit manual. Komponen baru di luar pustaka ditambahkan ke bagian 7.
+- Kolom *Code*: data/markup di `@dumns/ordinara`. *HTML Preview*: halaman `apps/preview`. *Storybook*: story di `apps/storybook`. Ketiganya berasal dari satu sumber.
 - Untuk halaman pustaka, ✅ Code/HTML/Storybook berarti **lolos penyapuan otomatis** (semua contoh ter-render, interaksi aktif, tanpa error konsol, tanpa teks/aset brand lain).
 - *Dark*: tampil benar di light & dark (diperiksa per halaman). *A11y*: kontras AA, keyboard, ARIA, addon a11y Storybook bersih. *Changelog*: tercakup di `CHANGELOG.md` untuk versi terkait.
 - *Ditambahkan*: tanggal komponen **dibuat** (kosong selama belum dibuat). *Selesai*: tanggal semua kolom terpenuhi.
@@ -17,7 +17,7 @@ Dokumen ini adalah sumber kebenaran progres pekerjaan. **Wajib diperbarui di PR 
 
 | Bagian | Total | Masuk versi 0.1.0 | Selesai |
 |---|---|---|---|
-| Infrastruktur & rilis | 20 | - | 12 |
+| Infrastruktur & rilis | 21 | - | 12 |
 | Foundation | 12 | - | 11 |
 | Components | 44 | 17 | 0 |
 | Forms | 13 | 7 | 0 |
@@ -37,7 +37,7 @@ Dokumen ini adalah sumber kebenaran progres pekerjaan. **Wajib diperbarui di PR 
 | 3 | Preview HTML terpasang & build lolos | 2026-10-15 | 2026-10-15 | ✅ | App shell dengan sidebar, topbar, routing hash |
 | 4 | Satu sumber markup untuk Storybook & preview | 2026-10-15 | 2026-10-15 | ✅ | Data halaman + fungsi render bersama |
 | 5 | CHANGELOG.md awal | 2026-10-15 | 2026-10-15 | ✅ |  |
-| 6 | Generator pustaka komponen (halaman + story + registry) | 2026-10-15 | 2026-10-15 | ✅ | `npm run gen:library -w @ordinara/ui` |
+| 6 | Generator pustaka komponen (halaman + story + registry) | 2026-10-15 | 2026-10-15 | ✅ | `npm run gen:library -w @dumns/ordinara` |
 | 7 | Rilis bertahap lewat manifest versi | 2026-10-15 | 2026-10-15 | ✅ | `packages/ui/library-manifest.json` (since per halaman) |
 | 8 | Jembatan token komponen -> token Ordinara | 2026-10-15 | 2026-10-15 | ✅ | `packages/tokens/src/compat.css` |
 | 9 | Berkas notice lisensi pihak ketiga |  |  | ➖ | Dilewati: pengembang sama. Notice ikon tetap ada di `packages/icons/NOTICE` |
@@ -52,6 +52,7 @@ Dokumen ini adalah sumber kebenaran progres pekerjaan. **Wajib diperbarui di PR 
 | 18 | Library Figma + versi selaras |  |  | ⬜ |  |
 | 19 | Branch produksi (nama dipilih nanti; `release` bentrok dengan `release/<v>`) |  |  | ⬜ | Dibuat saat siap rilis |
 | 20 | AGENTS.md dan CLAUDE.md di repo | 2026-10-25 | 2026-10-25 | ✅ | Aturan untuk agen AI; `CLAUDE.md` mengimpor `AGENTS.md` |
+| 21 | Publish otomatis ke GitHub Packages (`.github/workflows/publish.yml`) | 2026-10-31 |  | ⬜ | Paket `@dumns/ordinara`, `@dumns/ordinara-tokens`, `@dumns/ordinara-icons`. Jalan saat push ke `production`; ✅ setelah workflow pertama sukses dan paket muncul di Packages |
 
 ## 2. Foundation
 
@@ -69,7 +70,7 @@ Dokumen ini adalah sumber kebenaran progres pekerjaan. **Wajib diperbarui di PR 
 | 10 | RTL | 2026-10-15 | 2026-10-15 | ✅ | Diverifikasi `dir=rtl` di preview & Storybook; aturan utilitas logis |
 | 11 | Optimization (purge/bundle size) | 2026-10-15 | 2026-10-15 | ✅ | `npm run size` dengan budget CSS 60 kB gzip |
 | 12 | Motion tokens (+ prefers-reduced-motion) | 2026-10-15 |  | ⬜ | Durasi/easing/animasi ada; reduced-motion belum diuji di browser |
-| 13 | Icon classes `ori` (CSS mask + font) | 2026-10-25 | 2026-10-25 | ✅ | `@ordinara/icons`: `ori ori-nama`, `ori-bold`, `ori-fill`. Mask: 220 ikon (~31 kB gzip per bobot, build `build:mask`). Font: 1.512 ikon, woff2 ~127 kB per bobot (build `build:font`, tidak di-commit). Render kedua jalur identik; halaman Icons memuat katalog, cari, dan salin class |
+| 13 | Icon classes `ori` (CSS mask + font) | 2026-10-25 | 2026-10-25 | ✅ | `@dumns/ordinara-icons`: `ori ori-nama`, `ori-bold`, `ori-fill`. Mask: 220 ikon (~31 kB gzip per bobot, build `build:mask`). Font: 1.512 ikon, woff2 ~127 kB per bobot (build `build:font`, tidak di-commit). Render kedua jalur identik; halaman Icons memuat katalog, cari, dan salin class |
 
 ## 3. Components
 
@@ -200,7 +201,7 @@ Syarat rilis 0.1.0 yang masih terbuka. Centang hanya setelah diverifikasi.
 | 2026-10-15 | Token dan helper ditulis ulang sebagai identitas visual Ordinara. |
 | 2026-10-15 | Identitas Ordinara ditambahkan: logo, font display, halaman Brand identity. |
 | 2026-10-15 | Pustaka komponen di-generate (70 halaman tersedia) dengan rilis bertahap lewat manifest; v0.1.0 memuat 25 halaman inti. Brand disatukan menjadi Ordinara. |
-| 2026-10-25 | Paket `@ordinara/icons` ditambahkan: class `ori` lewat CSS mask dan font, katalog di halaman Icons. |
+| 2026-10-25 | Paket `@dumns/ordinara-icons` ditambahkan: class `ori` lewat CSS mask dan font, katalog di halaman Icons. |
 | 2026-10-15 | Perbaikan: tautan placeholder tidak lagi ke Overview; contoh sidebar/navbar dikurung bingkai; select/dropdown di-style; aset dan deskripsi hasil generator dibersihkan. |
 | 2026-10-25 | Perbaikan form: checkbox, radio, toggle (mati), dan border input/textarea/select lebih terlihat. |
 | 2026-10-25 | Storybook: Gallery di urutan pertama untuk 25 komponen pustaka dan 4 story tulis-tangan (Badge, Button, Card, Frame). |
@@ -210,3 +211,4 @@ Syarat rilis 0.1.0 yang masih terbuka. Centang hanya setelah diverifikasi.
 | 2026-10-25 | Masih terbuka: search/sort tabel, galat konsol modal di Table, Breadcrumb dropdown di mobile, warna toggle Colors, peninjauan visual halaman tersisa dan dark mode. |
 | 2026-10-25 | Build paket npm (tokens, icons, ui) dengan dist + types, diuji dari tarball; AGENTS.md dan CLAUDE.md ditambahkan; status Vercel dan branch permanen diperbarui; bagian "Improvement sebelum rilis 0.1.0" ditambahkan. |
 | 2026-10-31 | Rilis 0.1.0: CHANGELOG diberi tanggal, branch release/0.1.0, merge ke master, branch produksi, tag v0.1.0. |
+| 2026-10-31 | Publish diganti ke GitHub Packages (seperti KarirKit): paket dinamai ulang `@dumns/ordinara`, `@dumns/ordinara-tokens`, `@dumns/ordinara-icons`; ditambah workflow publish dan `.npmrc`. Publish npmjs.com dibatalkan (butuh OTP dan organisasi). |

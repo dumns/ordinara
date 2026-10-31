@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "@ordinara/tokens/tokens.css";
+@import "@dumns/ordinara-tokens/tokens.css";
 @import "./library/safelist.css";
 @plugin "flowbite/plugin";
 

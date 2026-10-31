@@ -1,7 +1,7 @@
-import "@ordinara/ui/fonts.css";
-import "@ordinara/ui/styles.css";
-import "@ordinara/icons/mask.css";
-import { icon, initLibrary, logoDataUri, logoMark } from "@ordinara/ui";
+import "@dumns/ordinara/fonts.css";
+import "@dumns/ordinara/styles.css";
+import "@dumns/ordinara-icons/mask.css";
+import { icon, initLibrary, logoDataUri, logoMark } from "@dumns/ordinara";
 import { pages, type Page } from "./pages";
 
 const root = document.documentElement;

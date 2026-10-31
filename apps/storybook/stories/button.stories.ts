@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/html-vite";
-import { button, buttonSizes, buttonVariants, iconNames, renderButtonDemo, type ButtonProps } from "@ordinara/ui";
+import { button, buttonSizes, buttonVariants, iconNames, renderButtonDemo, type ButtonProps } from "@dumns/ordinara";
 
 const meta: Meta<ButtonProps> = {
   title: "Ordinara/Button",

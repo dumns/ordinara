@@ -1,6 +1,6 @@
 // Menghasilkan src/mask/*.css (jalur CSS mask) dari SVG Phosphor (MIT): class "ori ori-<nama>",
 // "ori-bold ori-<nama>", "ori-fill ori-<nama>". Hanya ikon di icon-set.json yang disertakan.
-// Jalankan: npm run build:mask -w @ordinara/icons
+// Jalankan: npm run build:mask -w @dumns/ordinara-icons
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -70,7 +70,7 @@ for (const [weight, rules] of Object.entries(byWeight)) {
 writeFileSync(
   join(root, "src/mask.css"),
   HEADER +
-    '/* Semua bobot. Untuk satu bobot saja: import "@ordinara/icons/mask/base.css" dan "@ordinara/icons/mask/regular.css". */' + NL +
+    '/* Semua bobot. Untuk satu bobot saja: import "@dumns/ordinara-icons/mask/base.css" dan "@dumns/ordinara-icons/mask/regular.css". */' + NL +
     '@import "./mask/base.css";' + NL +
     '@import "./mask/regular.css";' + NL +
     '@import "./mask/bold.css";' + NL +

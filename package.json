@@ -12,15 +12,15 @@
     "node": ">=22"
   },
   "scripts": {
-    "dev:storybook": "npm run dev -w @ordinara/storybook",
-    "dev:preview": "npm run dev -w @ordinara/preview",
-    "build:storybook": "npm run build -w @ordinara/storybook",
-    "build:preview": "npm run build -w @ordinara/preview",
+    "dev:storybook": "npm run dev -w @dumns/ordinara-storybook",
+    "dev:preview": "npm run dev -w @dumns/ordinara-preview",
+    "build:storybook": "npm run build -w @dumns/ordinara-storybook",
+    "build:preview": "npm run build -w @dumns/ordinara-preview",
     "build": "npm run build:preview && npm run build:storybook",
     "typecheck": "tsc -b",
     "size": "node scripts/size-report.mjs",
-    "build:packages": "npm run build -w @ordinara/icons -w @ordinara/ui",
-    "pack:check": "npm pack --dry-run --workspace @ordinara/tokens --workspace @ordinara/icons --workspace @ordinara/ui"
+    "build:packages": "npm run build -w @dumns/ordinara-icons -w @dumns/ordinara",
+    "pack:check": "npm pack --dry-run --workspace @dumns/ordinara-tokens --workspace @dumns/ordinara-icons --workspace @dumns/ordinara"
   },
   "devDependencies": {
     "typescript": "^6.0.3"
