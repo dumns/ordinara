@@ -1,5 +1,5 @@
 {
-  "name": "@ordinara/ui",
+  "name": "@dumns/ordinara",
   "version": "0.1.0",
   "description": "Ordinara UI components",
   "type": "module",
@@ -36,8 +36,8 @@
   ],
   "dependencies": {
     "@fontsource-variable/bricolage-grotesque": "^5.3.0",
-    "@ordinara/icons": "0.1.0",
-    "@ordinara/tokens": "0.1.0",
+    "@dumns/ordinara-icons": "0.1.0",
+    "@dumns/ordinara-tokens": "0.1.0",
     "apexcharts": "^4.7.0",
     "flowbite": "^4.0.2",
     "simple-datatables": "^10.3.0"
@@ -60,7 +60,7 @@
     "url": "https://github.com/dumns/ordinara/issues"
   },
   "publishConfig": {
-    "access": "public"
+    "registry": "https://npm.pkg.github.com"
   },
   "engines": {
     "node": ">=22"

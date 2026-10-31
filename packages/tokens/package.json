@@ -1,5 +1,5 @@
 {
-  "name": "@ordinara/tokens",
+  "name": "@dumns/ordinara-tokens",
   "version": "0.1.0",
   "description": "Ordinara design tokens (Tailwind CSS v4 theme + CSS variables)",
   "type": "module",
@@ -24,7 +24,7 @@
     "url": "https://github.com/dumns/ordinara/issues"
   },
   "publishConfig": {
-    "access": "public"
+    "registry": "https://npm.pkg.github.com"
   },
   "engines": {
     "node": ">=22"

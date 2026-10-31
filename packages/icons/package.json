@@ -1,5 +1,5 @@
 {
-  "name": "@ordinara/icons",
+  "name": "@dumns/ordinara-icons",
   "version": "0.1.0",
   "description": "Ordinara icons: class-based icon set (ori ori-name) as CSS mask or icon font",
   "type": "module",
@@ -49,7 +49,7 @@
     "url": "https://github.com/dumns/ordinara/issues"
   },
   "publishConfig": {
-    "access": "public"
+    "registry": "https://npm.pkg.github.com"
   },
   "engines": {
     "node": ">=22"

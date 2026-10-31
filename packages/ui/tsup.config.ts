@@ -1,7 +1,7 @@
 import { defineConfig } from "tsup";
 
 // Bundel ESM + tipe. Halaman pustaka (src/library/pages) jadi entry sendiri agar bisa di-import terpisah
-// (`@ordinara/ui/library/<halaman>`) dan dimuat lazy oleh registry.
+// (`@dumns/ordinara/library/<halaman>`) dan dimuat lazy oleh registry.
 export default defineConfig({
   entry: ["src/index.ts", "src/library/pages/*.ts"],
   format: ["esm"],

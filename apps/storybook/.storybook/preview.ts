@@ -1,9 +1,9 @@
 import type { Preview } from "@storybook/html-vite";
 import { withThemeByClassName, withThemeByDataAttribute } from "@storybook/addon-themes";
-import { initLibrary } from "@ordinara/ui";
-import "@ordinara/ui/fonts.css";
-import "@ordinara/ui/styles.css";
-import "@ordinara/icons/mask.css";
+import { initLibrary } from "@dumns/ordinara";
+import "@dumns/ordinara/fonts.css";
+import "@dumns/ordinara/styles.css";
+import "@dumns/ordinara-icons/mask.css";
 
 const preview: Preview = {
   globalTypes: {

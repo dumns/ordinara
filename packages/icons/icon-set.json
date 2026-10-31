@@ -1,5 +1,5 @@
 {
-  "_": "Daftar ikon untuk jalur CSS mask (ori.mask). Tambahkan nama Phosphor di sini lalu jalankan: npm run build:mask -w @ordinara/icons. Jalur font memuat seluruh ikon.",
+  "_": "Daftar ikon untuk jalur CSS mask (ori.mask). Tambahkan nama Phosphor di sini lalu jalankan: npm run build:mask -w @dumns/ordinara-icons. Jalur font memuat seluruh ikon.",
   "names": [
     "house", "squares-four", "book-open", "users", "user", "robot", "sparkle", "gear", "question", "shield",
     "bell", "magnifying-glass", "list", "dots-three", "dots-three-vertical", "sidebar-simple", "sign-out", "sign-in", "sun", "moon",

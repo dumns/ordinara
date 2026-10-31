@@ -1,7 +1,7 @@
 // GENERATED oleh scripts/gen-library.mjs. Jangan edit manual.
 import type { Meta, StoryObj } from "@storybook/html-vite";
-import { renderLibraryPage, renderLibrarySection } from "@ordinara/ui";
-import page from "@ordinara/ui/library/components-toast";
+import { renderLibraryPage, renderLibrarySection } from "@dumns/ordinara";
+import page from "@dumns/ordinara/library/components-toast";
 
 const meta: Meta = { title: "Components/Toast" };
 export default meta;

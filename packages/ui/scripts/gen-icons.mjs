@@ -1,5 +1,5 @@
 // Menghasilkan src/foundation/icons.generated.ts dari Phosphor Icons (MIT), bobot regular/bold/fill.
-// Nama Ordinara -> nama file Phosphor. Jalankan: npm run gen:icons -w @ordinara/ui
+// Nama Ordinara -> nama file Phosphor. Jalankan: npm run gen:icons -w @dumns/ordinara
 import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";

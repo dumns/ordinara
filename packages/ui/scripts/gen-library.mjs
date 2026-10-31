@@ -5,7 +5,7 @@
 //   - packages/ui/src/library/registry.ts               (daftar + loader dinamis)
 //   - apps/storybook/stories/library/<group>-<name>.stories.ts
 // Hanya halaman yang jadwalnya <= versi paket (library-manifest.json) yang dibuat.
-// Jalankan: npm run gen:library -w @ordinara/ui   (butuh internet saat pertama kali; sumber di-cache)
+// Jalankan: npm run gen:library -w @dumns/ordinara   (butuh internet saat pertama kali; sumber di-cache)
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -231,7 +231,7 @@ for (const [group, names] of Object.entries(SOURCES)) {
     });
     writeFileSync(
       join(storiesDir, `${fileId}.stories.ts`),
-      `// GENERATED oleh scripts/gen-library.mjs. Jangan edit manual.\nimport type { Meta, StoryObj } from "@storybook/html-vite";\nimport { renderLibraryPage, renderLibrarySection } from "@ordinara/ui";\nimport page from "@ordinara/ui/library/${fileId}";\n\nconst meta: Meta = { title: ${JSON.stringify(`${group}/${page.title}`)} };\nexport default meta;\n\ntype Story = StoryObj;\n\nexport const Gallery: Story = { name: "Gallery", render: () => renderLibraryPage(page) };\n${storyExports.join("\n")}\n`,
+      `// GENERATED oleh scripts/gen-library.mjs. Jangan edit manual.\nimport type { Meta, StoryObj } from "@storybook/html-vite";\nimport { renderLibraryPage, renderLibrarySection } from "@dumns/ordinara";\nimport page from "@dumns/ordinara/library/${fileId}";\n\nconst meta: Meta = { title: ${JSON.stringify(`${group}/${page.title}`)} };\nexport default meta;\n\ntype Story = StoryObj;\n\nexport const Gallery: Story = { name: "Gallery", render: () => renderLibraryPage(page) };\n${storyExports.join("\n")}\n`,
     );
   }
 }

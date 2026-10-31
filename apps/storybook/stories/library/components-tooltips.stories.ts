@@ -1,7 +1,7 @@
 // GENERATED oleh scripts/gen-library.mjs. Jangan edit manual.
 import type { Meta, StoryObj } from "@storybook/html-vite";
-import { renderLibraryPage, renderLibrarySection } from "@ordinara/ui";
-import page from "@ordinara/ui/library/components-tooltips";
+import { renderLibraryPage, renderLibrarySection } from "@dumns/ordinara";
+import page from "@dumns/ordinara/library/components-tooltips";
 
 const meta: Meta = { title: "Components/Tooltip" };
 export default meta;
