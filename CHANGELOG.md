@@ -5,7 +5,7 @@ Kelompok: **Breaking / Added / Changed / Fixed**.
 
 Rilis dilakukan bertahap: setiap versi hanya memuat komponen yang dijadwalkan untuk versi itu (`packages/ui/library-manifest.json`).
 
-## [Unreleased] — 0.1.0 (komponen inti)
+## [0.1.0] — 2026-10-31 (komponen inti)
 
 ### Added
 - **Identitas Ordinara**: logo (tiga batang berurutan di ubin membulat), font display untuk semua heading, koreksi metrik font agar teks seimbang secara vertikal, favicon, dan halaman dokumentasi **Brand identity** (Storybook + preview). Palet tetap biru profesional dan neutral slate.

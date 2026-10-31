@@ -209,3 +209,4 @@ Syarat rilis 0.1.0 yang masih terbuka. Centang hanya setelah diverifikasi.
 | 2026-10-25 | Perbaikan drawer: contoh di atas backdrop dan di bawah menu aplikasi (sempat regresi z-index, sudah diperbaiki). |
 | 2026-10-25 | Masih terbuka: search/sort tabel, galat konsol modal di Table, Breadcrumb dropdown di mobile, warna toggle Colors, peninjauan visual halaman tersisa dan dark mode. |
 | 2026-10-25 | Build paket npm (tokens, icons, ui) dengan dist + types, diuji dari tarball; AGENTS.md dan CLAUDE.md ditambahkan; status Vercel dan branch permanen diperbarui; bagian "Improvement sebelum rilis 0.1.0" ditambahkan. |
+| 2026-10-31 | Rilis 0.1.0: CHANGELOG diberi tanggal, branch release/0.1.0, merge ke master, branch produksi, tag v0.1.0. |
