@@ -17,13 +17,14 @@ Dokumen ini adalah sumber kebenaran progres pekerjaan. **Wajib diperbarui di PR 
 
 | Bagian | Total | Masuk versi 0.1.0 | Selesai |
 |---|---|---|---|
-| Infrastruktur & rilis | 18 | - | 8 |
+| Infrastruktur & rilis | 20 | - | 12 |
 | Foundation | 12 | - | 11 |
 | Components | 44 | 17 | 0 |
 | Forms | 13 | 7 | 0 |
 | Typography | 9 | 1 | 0 |
 | Plugins | 4 | 0 | 0 |
 | Helpers & tambahan | 5 | - | 0 |
+| Improvement sebelum rilis 0.1.0 | 9 | - | 0 |
 
 > "Selesai" menunggu audit a11y dan pemeriksaan dark per halaman. Angka diperbarui manual.
 
@@ -39,16 +40,18 @@ Dokumen ini adalah sumber kebenaran progres pekerjaan. **Wajib diperbarui di PR 
 | 6 | Generator pustaka komponen (halaman + story + registry) | 2026-10-15 | 2026-10-15 | ✅ | `npm run gen:library -w @ordinara/ui` |
 | 7 | Rilis bertahap lewat manifest versi | 2026-10-15 | 2026-10-15 | ✅ | `packages/ui/library-manifest.json` (since per halaman) |
 | 8 | Jembatan token komponen -> token Ordinara | 2026-10-15 | 2026-10-15 | ✅ | `packages/tokens/src/compat.css` |
-| 9 | Berkas notice lisensi pihak ketiga |  |  | ⬜ |  |
-| 10 | Build package npm (dist + types) |  |  | ⬜ |  |
+| 9 | Berkas notice lisensi pihak ketiga |  |  | ➖ | Dilewati: pengembang sama. Notice ikon tetap ada di `packages/icons/NOTICE` |
+| 10 | Build package npm (dist + types) | 2026-10-25 | 2026-10-25 | ✅ | tsup (ESM + d.ts). Kondisi `source` di exports: monorepo memakai source, konsumen memakai dist. Diuji dari tarball ke proyek Vite + Tailwind terpisah. `npm run build:packages`, `npm run pack:check` |
 | 11 | Changesets / otomasi changelog + tag + publish |  |  | ⬜ |  |
-| 12 | Vercel project produksi (branch `release`) |  |  | ⬜ |  |
-| 13 | Vercel project internal (branch `dev/vercel`) |  |  | ⬜ |  |
-| 14 | Branch permanen `development`, `release`, `dev/vercel` |  |  | ⬜ |  |
+| 12 | Vercel project produksi (branch produksi) | 2026-10-25 |  | ⬜ | Project `ordinara` dan `ordinara-storybook` dibuat kosong, domain `ordinara.vercel.app` dan `ordinara-storybook.vercel.app` dicadangkan. Deploy menunggu branch produksi |
+| 13 | Vercel project internal (branch `dev/vercel`) | 2026-10-25 | 2026-10-25 | ✅ | `ordinara-dev` (preview) dan `ordinara-storybook-dev` (Storybook). Ignored Build Step: hanya `dev/vercel` yang membangun. Production Branch diatur di dashboard |
+| 14 | Branch permanen `development` dan `dev/vercel` | 2026-10-25 | 2026-10-25 | ✅ |  |
 | 15 | CI (typecheck, build storybook & preview) |  |  | ⬜ |  |
 | 16 | Lint + format |  |  | ⬜ |  |
 | 17 | Visual regression / a11y test |  |  | ⬜ |  |
 | 18 | Library Figma + versi selaras |  |  | ⬜ |  |
+| 19 | Branch produksi (nama dipilih nanti; `release` bentrok dengan `release/<v>`) |  |  | ⬜ | Dibuat saat siap rilis |
+| 20 | AGENTS.md dan CLAUDE.md di repo | 2026-10-25 | 2026-10-25 | ✅ | Aturan untuk agen AI; `CLAUDE.md` mengimpor `AGENTS.md` |
 
 ## 2. Foundation
 
@@ -172,6 +175,22 @@ Helper TS (fungsi yang menghasilkan markup) dan komponen tambahan yang muncul di
 | 4 | frame() | 2026-10-15 |  |  | ✅ | ✅ | ✅ | ⬜ | ⬜ | ✅ | Tiga titik, judul mono, tab pill. Sisa: dark, a11y |
 | 5 | Alert Stack (Flag) |  |  |  | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | Wajib: menumpuk atas → bawah, batas jumlah, auto-dismiss, aria-live |
 
+## 8. Improvement sebelum rilis 0.1.0
+
+Syarat rilis 0.1.0 yang masih terbuka. Centang hanya setelah diverifikasi.
+
+| # | Item | Ditambahkan | Selesai | Status | Catatan |
+|---|---|---|---|---|---|
+| 1 | Pemeriksaan dark mode per halaman (25 halaman) | 2026-10-25 |  | ⬜ | Kolom Dark di tabel komponen |
+| 2 | Audit a11y (25 halaman) | 2026-10-25 |  | ⬜ | Kolom A11y di tabel komponen |
+| 3 | Tinjauan visual halaman tersisa | 2026-10-25 |  | ⬜ | Search Input, Textarea, Modal, Progress, List Group, Tabs, Toast, Tooltips, HR; Sidebar, Tables, Dropdowns baru slice pertama |
+| 4 | Keputusan tabel: search dan sortir | 2026-10-25 |  | ⬜ | Halaman Datatables, skrip perilaku, atau terima statis dan dokumentasikan |
+| 5 | Perbaiki galat konsol `crud-modal` di contoh Table with modal | 2026-10-25 |  | ⬜ | Contoh memanggil modal yang didefinisikan di contoh lain |
+| 6 | Breadcrumb dengan dropdown di mobile | 2026-10-25 |  | ⬜ | Sekarang bisa digeser; ringkas jadi ikon |
+| 7 | Warna toggle "Colors" diselaraskan dengan palet Ordinara | 2026-10-25 |  | ⬜ | Saat ini warna bawaan contoh |
+| 8 | CI (typecheck, build) dan lint + format | 2026-10-25 |  | ⬜ | Lihat Infrastruktur #15 dan #16 |
+| 9 | Branch produksi, `release/0.1.0`, deploy produksi, tag, GitHub release, publish npm | 2026-10-25 |  | ⬜ | Hanya atas perintah |
+
 ## Log perubahan daftar
 
 | Tanggal | Perubahan |
@@ -189,3 +208,4 @@ Helper TS (fungsi yang menghasilkan markup) dan komponen tambahan yang muncul di
 | 2026-10-25 | Perbaikan layar sempit (uji di perangkat): baris membungkus, badge/tombol/toggle tidak penyok, tooltip tidak terpotong, tombol form jadi ikon, pagination membungkus, contoh lebar bisa digeser. |
 | 2026-10-25 | Perbaikan drawer: contoh di atas backdrop dan di bawah menu aplikasi (sempat regresi z-index, sudah diperbaiki). |
 | 2026-10-25 | Masih terbuka: search/sort tabel, galat konsol modal di Table, Breadcrumb dropdown di mobile, warna toggle Colors, peninjauan visual halaman tersisa dan dark mode. |
+| 2026-10-25 | Build paket npm (tokens, icons, ui) dengan dist + types, diuji dari tarball; AGENTS.md dan CLAUDE.md ditambahkan; status Vercel dan branch permanen diperbarui; bagian "Improvement sebelum rilis 0.1.0" ditambahkan. |

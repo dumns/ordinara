@@ -18,7 +18,9 @@
     "build:preview": "npm run build -w @ordinara/preview",
     "build": "npm run build:preview && npm run build:storybook",
     "typecheck": "tsc -b",
-    "size": "node scripts/size-report.mjs"
+    "size": "node scripts/size-report.mjs",
+    "build:packages": "npm run build -w @ordinara/icons -w @ordinara/ui",
+    "pack:check": "npm pack --dry-run --workspace @ordinara/tokens --workspace @ordinara/icons --workspace @ordinara/ui"
   },
   "devDependencies": {
     "typescript": "^6.0.3"

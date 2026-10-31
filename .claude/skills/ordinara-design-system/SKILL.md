@@ -108,6 +108,7 @@ Nilai berikut adalah identitas visual Ordinara (di `@ordinara/tokens`). Setiap k
 - Shadow: `shadow-card`, `shadow-card-lg`, `shadow-glow-primary`. z-index: dropdown 20, sticky 30, overlay 40, toast 50. Motion: `ease-out-soft`, durasi fast 150ms / normal 200ms, `animate-fade-in`, `animate-spin-slow`.
 - Dark mode MEMBALIK nilai skala primitive di `.dark` / `html[data-theme="dark"]` (neutral dibalik; primary/status 50–200 dan 700–900 diganti). Karena itu pakai utilitas skala (`bg-neutral-100`, `text-primary-700`), jangan menambah `dark:` ad-hoc. Hover tombol solid memakai `hover-primary`/`hover-danger` yang tidak ikut dibalik.
 - Utilitas brand: `bg-shell` (gradient radial lembut biru + oranye), `bg-brand-gradient`, `bg-brand-gradient-soft`, `scrollbar-none`.
+- Paket npm (`tokens`, `icons`, `ui`): `exports` memakai kondisi `source` (monorepo membaca source TS) dan `dist` untuk konsumen. Build `npm run build:packages` (icons dulu, lalu ui); isi tarball dicek lewat `npm run pack:check`. Vite/Storybook sudah memakai `resolve.conditions: ["source", ...]`.
 - Ikon: class `ori ori-nama` / `ori-bold` / `ori-fill` dari paket `@ordinara/icons` (jalur CSS mask `mask.css` untuk ikon terdaftar di `packages/icons/icon-set.json`, jalur font `font.css` untuk semua ikon), dan helper TS `icon()` (SVG inline). Tambah ikon: edit `icon-set.json` lalu `npm run build:mask -w @ordinara/icons`. Sumber SVG Phosphor (MIT); pemberitahuan lisensi hanya di `packages/icons/NOTICE`, jangan disebut di UI/dokumentasi.
 
 **Ciri khas Ordinara (halus, fungsional)**
