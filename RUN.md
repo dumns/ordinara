@@ -40,6 +40,15 @@ Untuk melihat hasil build preview secara lokal:
 npm run preview -w @ordinara/preview
 ```
 
+### Paket npm
+
+```bash
+npm run build:packages   # icons (js + font) lalu ui (ESM + tipe) ke packages/*/dist
+npm run pack:check       # lihat isi tarball tiap paket (dry run)
+```
+
+Di monorepo, paket `@ordinara/*` dibaca dari source TypeScript lewat kondisi `source` di `exports` (Vite, Storybook, dan `tsc` sudah diatur). Konsumen luar memakai `dist`. Font ikon (`packages/icons/dist/font`) tidak di-commit; `npm publish` menjalankannya lewat `prepublishOnly`.
+
 ## 5. Generator (jalankan dari root repo)
 
 Dijalankan dari `packages/ui`:
