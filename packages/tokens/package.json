@@ -8,7 +8,8 @@
     "./tokens.css": "./src/tokens.css"
   },
   "files": [
-    "src"
+    "src",
+    "CHANGELOG.md"
   ],
   "sideEffects": [
     "*.css"
@@ -27,5 +28,9 @@
   },
   "engines": {
     "node": ">=22"
+  },
+  "scripts": {
+    "prepack": "node ../../scripts/copy-changelog.mjs",
+    "postpack": "node ../../scripts/copy-changelog.mjs --clean"
   }
 }

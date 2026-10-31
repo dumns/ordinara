@@ -20,13 +20,16 @@
   },
   "files": [
     "dist",
-    "src"
+    "src",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "gen:icons": "node scripts/gen-icons.mjs",
     "gen:library": "node scripts/gen-library.mjs && node scripts/gen-library-safelist.mjs",
     "build": "tsup",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "prepack": "node ../../scripts/copy-changelog.mjs",
+    "postpack": "node ../../scripts/copy-changelog.mjs --clean"
   },
   "sideEffects": [
     "*.css"

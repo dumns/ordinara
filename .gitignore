@@ -13,3 +13,6 @@ dist-types/
 
 # icons
 packages/icons/.cache/
+
+# salinan CHANGELOG yang dibuat saat npm pack
+packages/*/CHANGELOG.md

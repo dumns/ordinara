@@ -18,7 +18,8 @@
   "files": [
     "dist",
     "src",
-    "NOTICE"
+    "NOTICE",
+    "CHANGELOG.md"
   ],
   "sideEffects": [
     "*.css"
@@ -28,7 +29,9 @@
     "build:font": "node scripts/build-font.mjs",
     "build:js": "tsup",
     "build": "npm run build:js && npm run build:font",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "prepack": "node ../../scripts/copy-changelog.mjs",
+    "postpack": "node ../../scripts/copy-changelog.mjs --clean"
   },
   "devDependencies": {
     "svg2ttf": "^6.1.0",
