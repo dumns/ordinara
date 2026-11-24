@@ -21,7 +21,7 @@ const DIRECTIONAL = [
   "list-bullets", "text-align-left", "text-align-right", "trend-up", "trend-down",
 ];
 
-const { names } = JSON.parse(readFileSync(join(root, "icon-set.json"), "utf8"));
+const { names, vars = [] } = JSON.parse(readFileSync(join(root, "icon-set.json"), "utf8"));
 const unique = [...new Set(names)].sort();
 
 const uri = (svg) =>
@@ -59,6 +59,18 @@ const rtl = DIRECTIONAL.map((n) => `[dir="rtl"] .ori-${n}`).join(",") + "{transf
 
 mkdirSync(join(root, "src/mask"), { recursive: true });
 writeFileSync(join(root, "src/mask/base.css"), HEADER + "/* Dasar: ukuran = font-size, warna = color. */" + NL + base + NL + rtl + NL);
+
+// Ikon sebagai variabel CSS (bobot bold) untuk CSS komponen yang tidak bisa memakai elemen <i>,
+// mis. checkmark opsi select: `mask: var(--ori-check)`. Daftar nama ada di "vars" pada icon-set.json.
+const varRules = vars.map((name) => {
+  const file = join(assets, "bold", `${name}-bold.svg`);
+  if (!existsSync(file)) throw new Error(`Ikon vars tidak ditemukan di Phosphor: bold/${name}`);
+  return `--ori-${name}:${uri(readFileSync(file, "utf8"))}`;
+});
+writeFileSync(
+  join(root, "src/mask/vars.css"),
+  HEADER + "/* Ikon sebagai variabel CSS (bobot bold): mask: var(--ori-nama). */" + NL + `:root{${varRules.join(";")}}` + NL,
+);
 
 const sizes = [];
 for (const [weight, rules] of Object.entries(byWeight)) {
