@@ -17,7 +17,7 @@ Dokumen ini adalah sumber kebenaran progres pekerjaan. **Wajib diperbarui di PR 
 
 | Bagian | Total | Masuk versi 0.1.0 | Selesai |
 |---|---|---|---|
-| Infrastruktur & rilis | 21 | - | 12 |
+| Infrastruktur & rilis | 22 | - | 12 |
 | Foundation | 12 | - | 11 |
 | Components | 44 | 17 | 0 |
 | Forms | 13 | 7 | 0 |
@@ -53,6 +53,7 @@ Dokumen ini adalah sumber kebenaran progres pekerjaan. **Wajib diperbarui di PR 
 | 19 | Branch produksi (nama dipilih nanti; `release` bentrok dengan `release/<v>`) |  |  | ⬜ | Dibuat saat siap rilis |
 | 20 | AGENTS.md dan CLAUDE.md di repo | 2026-10-25 | 2026-10-25 | ✅ | Aturan untuk agen AI; `CLAUDE.md` mengimpor `AGENTS.md` |
 | 21 | Publish otomatis ke GitHub Packages (`.github/workflows/publish.yml`) | 2026-10-31 |  | ⬜ | Paket `@dumns/ordinara`, `@dumns/ordinara-tokens`, `@dumns/ordinara-icons`. Jalan saat push ke `production`; ✅ setelah workflow pertama sukses dan paket muncul di Packages |
+| 22 | GitHub Release otomatis per tag (`.github/workflows/release.yml`) | 2026-11-24 |  | ⬜ | ✅ setelah workflow dijalankan dan Release v0.1.0 dan v0.1.1 muncul di halaman Releases |
 
 ## 2. Foundation
 
@@ -214,3 +215,4 @@ Syarat rilis 0.1.0 yang masih terbuka. Centang hanya setelah diverifikasi.
 | 2026-10-31 | Publish diganti ke GitHub Packages (seperti KarirKit): paket dinamai ulang `@dumns/ordinara`, `@dumns/ordinara-tokens`, `@dumns/ordinara-icons`; ditambah workflow publish dan `.npmrc`. Publish npmjs.com dibatalkan (butuh OTP dan organisasi). |
 | 2026-11-24 | Perbaikan select: centang opsi terpilih memakai ikon `ori` check (variabel CSS `--ori-check` dari paket ikon). Versi berjalan 0.1.1. |
 | 2026-11-24 | Rilis 0.1.1: versi paket dinaikkan, CHANGELOG diberi tanggal, branch release/0.1.1, merge ke master, tag v0.1.1. |
+| 2026-11-24 | Workflow GitHub Release ditambahkan: tiap tag `v*` otomatis menjadi Release berisi section CHANGELOG-nya; mengisi tag lama lewat Run workflow. |

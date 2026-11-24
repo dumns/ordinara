@@ -13,7 +13,7 @@ Baca ini dulu, lalu `.claude/skills/ordinara-design-system/SKILL.md` (panduan le
 - Stage per path, bukan `git add -A`. Folder `reference/` tidak pernah di-commit.
 - Jangan commit di `master`. Merge dengan `--no-ff`. Jangan `--force` kecuali diminta.
 - Alur rilis: `dev/<v>` → `release/<v>` → `master` → branch produksi → Vercel. Alur internal: `dev/<v>` → `development` → `dev/vercel`. Branch produksi belum dibuat (nama `release` bentrok dengan `release/<v>`).
-- Setiap rilis: changelog + tag + GitHub release + paket npm, hanya atas perintah.
+- Setiap rilis (hanya atas perintah): `CHANGELOG.md` bertanggal, tag `vX.Y.Z` (anotasi berisi section CHANGELOG versi itu), **GitHub Release** (otomatis lewat `.github/workflows/release.yml` saat tag `v*` di-push; isinya section CHANGELOG versi itu), dan paket di GitHub Packages (otomatis lewat `publish.yml` saat push ke `production`). Tag lama yang belum punya Release: Actions → GitHub Release → Run workflow (kosongkan `tag`).
 
 ## Komponen
 - Setiap komponen punya **preview HTML dan Storybook yang sinkron** (satu sumber render). Story **Gallery** selalu di urutan pertama.

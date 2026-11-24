@@ -49,6 +49,14 @@ npm run pack:check       # lihat isi tarball tiap paket (dry run)
 
 Di monorepo, paket `@dumns/ordinara-*` dibaca dari source TypeScript lewat kondisi `source` di `exports` (Vite, Storybook, dan `tsc` sudah diatur). Konsumen luar memakai `dist`. Font ikon (`packages/icons/dist/font`) tidak di-commit; publish menjalankannya lewat `prepublishOnly`. Publish dilakukan GitHub Actions saat push ke `production` (lihat `.github/workflows/publish.yml`).
 
+### Rilis
+
+```bash
+node scripts/release-notes.mjs 0.1.1   # pratinjau catatan Release dari CHANGELOG.md
+```
+
+Push tag `vX.Y.Z` membuat GitHub Release otomatis (`.github/workflows/release.yml`). Untuk tag yang belum punya Release: tab Actions, workflow **GitHub Release**, Run workflow (kosongkan `tag`; centang `update` untuk menimpa Release yang ada).
+
 ## 5. Generator (jalankan dari root repo)
 
 Dijalankan dari `packages/ui`:

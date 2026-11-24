@@ -5,6 +5,11 @@ Kelompok: **Breaking / Added / Changed / Fixed**.
 
 Rilis dilakukan bertahap: setiap versi hanya memuat komponen yang dijadwalkan untuk versi itu (`packages/ui/library-manifest.json`).
 
+## [Unreleased]
+
+### Added
+- Workflow `release.yml`: tiap tag versi (`v*`) otomatis menjadi GitHub Release berisi section CHANGELOG versi itu dan daftar paketnya; dapat dijalankan manual untuk mengisi Release tag lama. Skrip `scripts/release-notes.mjs` menghasilkan catatannya.
+
 ## [0.1.1] — 2026-11-24
 
 ### Fixed

@@ -1,0 +1,74 @@
+name: GitHub Release
+
+# Setiap tag versi (v*) otomatis menjadi GitHub Release dengan isi CHANGELOG versi itu.
+# Run workflow manual (tanpa isi `tag`) membuat Release untuk semua tag v* yang belum punya,
+# berguna untuk tag lama. Isi `tag` untuk satu tag saja, atau centang `update` untuk memperbarui yang sudah ada.
+on:
+  push:
+    tags: ["v*"]
+    # Saat workflow ini sendiri berubah di master, isi Release untuk semua tag yang belum punya.
+    branches: [master]
+    paths: [".github/workflows/release.yml", "scripts/release-notes.mjs"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag tertentu (mis. v0.1.1). Kosongkan untuk semua tag v* yang belum punya Release."
+        required: false
+        default: ""
+      update:
+        description: "Perbarui Release yang sudah ada (judul dan catatan)."
+        type: boolean
+        required: false
+        default: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      # Skrip diambil dari branch default; isi CHANGELOG diambil dari commit tag masing-masing.
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Buat Release
+        env:
+          REF_TYPE: ${{ github.ref_type }}
+          INPUT_TAG: ${{ github.event.inputs.tag }}
+          INPUT_UPDATE: ${{ github.event.inputs.update }}
+        run: |
+          if [ "$REF_TYPE" = "tag" ]; then
+            tags="$GITHUB_REF_NAME"
+          elif [ -n "$INPUT_TAG" ]; then
+            tags="$INPUT_TAG"
+          else
+            tags=$(git tag -l 'v*' --sort=version:refname)
+          fi
+
+          for tag in $tags; do
+            version="${tag#v}"
+            exists=false
+            gh release view "$tag" >/dev/null 2>&1 && exists=true
+
+            if [ "$exists" = true ] && [ "$INPUT_UPDATE" != "true" ]; then
+              echo "$tag sudah punya Release, dilewati"
+              continue
+            fi
+
+            git show "$tag:CHANGELOG.md" > "/tmp/CHANGELOG.$version.md"
+            node scripts/release-notes.mjs "$version" "/tmp/CHANGELOG.$version.md" > "/tmp/notes.$version.md"
+
+            if [ "$exists" = true ]; then
+              gh release edit "$tag" --title "Ordinara $version" --notes-file "/tmp/notes.$version.md"
+            else
+              gh release create "$tag" --verify-tag --title "Ordinara $version" --notes-file "/tmp/notes.$version.md"
+            fi
+            echo "Release $tag dibuat/diperbarui"
+          done
