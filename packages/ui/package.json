@@ -1,6 +1,6 @@
 {
   "name": "@dumns/ordinara",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Ordinara UI components",
   "type": "module",
   "license": "MIT",
@@ -36,8 +36,8 @@
   ],
   "dependencies": {
     "@fontsource-variable/bricolage-grotesque": "^5.3.0",
-    "@dumns/ordinara-icons": "0.1.0",
-    "@dumns/ordinara-tokens": "0.1.0",
+    "@dumns/ordinara-icons": "0.1.1",
+    "@dumns/ordinara-tokens": "0.1.1",
     "apexcharts": "^4.7.0",
     "flowbite": "^4.0.2",
     "simple-datatables": "^10.3.0"

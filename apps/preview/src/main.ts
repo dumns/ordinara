@@ -75,7 +75,7 @@ shell.innerHTML = `
       ${logoMark({ size: 36 })}
       <div class="min-w-0 flex-1 group-data-[collapsed=true]/shell:lg:hidden">
         <div class="font-display text-lg font-extrabold leading-4 tracking-tight">Ordinara</div>
-        <div class="text-micro text-fg-muted">Design System · v0.1.0</div>
+        <div class="text-micro text-fg-muted">Design System · v0.1.1</div>
       </div>
       <button id="collapse" type="button" aria-label="Ciutkan sidebar" class="hidden size-8 items-center justify-center rounded-control text-fg-muted hover:bg-neutral-100 lg:inline-flex group-data-[collapsed=true]/shell:lg:hidden">${icon({ name: "panel-left-close", size: 18 })}</button>
     </div>
