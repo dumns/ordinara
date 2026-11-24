@@ -1,4 +1,4 @@
-# @ordinara/icons
+# @dumns/ordinara-icons
 
 Ikon Ordinara lewat class: `ori` + `ori-nama`. Ukuran mengikuti `font-size`, warna mengikuti `color`.
 
@@ -12,10 +12,12 @@ Dua jalur dengan nama class yang sama:
 
 | Jalur | Impor | Isi | Ukuran |
 | --- | --- | --- | --- |
-| CSS mask | `@ordinara/icons/mask.css` (atau `mask/base.css` + `mask/regular.css`) | ikon di `icon-set.json` (220) | ~31 kB gzip per bobot |
-| Font | `@ordinara/icons/font.css` | seluruh ikon (1.512) | woff2 ~127 kB per bobot, dimuat saat dipakai |
+| CSS mask | `@dumns/ordinara-icons/mask.css` (atau `mask/base.css` + `mask/regular.css`) | ikon di `icon-set.json` (220) | ~31 kB gzip per bobot |
+| Font | `@dumns/ordinara-icons/font.css` | seluruh ikon (1.512) | woff2 ~127 kB per bobot, dimuat saat dipakai |
 
-Daftar nama yang tersedia di jalur mask: `@ordinara/icons/names` (`oriNames`).
+Ikon terpilih juga tersedia sebagai variabel CSS lewat `mask/vars.css` (`--ori-check`, dst.; daftar `vars` di `icon-set.json`), untuk CSS yang tidak bisa memakai elemen `<i>`, misalnya `mask: var(--ori-check) center / contain no-repeat`.
+
+Daftar nama yang tersedia di jalur mask: `@dumns/ordinara-icons/names` (`oriNames`).
 
 ## Build
 

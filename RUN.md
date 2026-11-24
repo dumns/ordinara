@@ -37,7 +37,7 @@ npm run size             # laporan ukuran bundle (budget 60 kB gzip)
 Untuk melihat hasil build preview secara lokal:
 
 ```bash
-npm run preview -w @ordinara/preview
+npm run preview -w @dumns/ordinara-preview
 ```
 
 ### Paket npm
@@ -47,22 +47,22 @@ npm run build:packages   # icons (js + font) lalu ui (ESM + tipe) ke packages/*/
 npm run pack:check       # lihat isi tarball tiap paket (dry run)
 ```
 
-Di monorepo, paket `@ordinara/*` dibaca dari source TypeScript lewat kondisi `source` di `exports` (Vite, Storybook, dan `tsc` sudah diatur). Konsumen luar memakai `dist`. Font ikon (`packages/icons/dist/font`) tidak di-commit; `npm publish` menjalankannya lewat `prepublishOnly`.
+Di monorepo, paket `@dumns/ordinara-*` dibaca dari source TypeScript lewat kondisi `source` di `exports` (Vite, Storybook, dan `tsc` sudah diatur). Konsumen luar memakai `dist`. Font ikon (`packages/icons/dist/font`) tidak di-commit; publish menjalankannya lewat `prepublishOnly`. Publish dilakukan GitHub Actions saat push ke `production` (lihat `.github/workflows/publish.yml`).
 
 ## 5. Generator (jalankan dari root repo)
 
 Dijalankan dari `packages/ui`:
 
 ```bash
-npm run gen:icons -w @ordinara/ui     # ikon Phosphor -> icons.generated.ts
-npm run gen:library -w @ordinara/ui   # halaman pustaka, registry, story, safelist.css
+npm run gen:icons -w @dumns/ordinara     # ikon Phosphor -> icons.generated.ts
+npm run gen:library -w @dumns/ordinara   # halaman pustaka, registry, story, safelist.css
 ```
 
-Ikon `ori` (paket `@ordinara/icons`):
+Ikon `ori` (paket `@dumns/ordinara-icons`):
 
 ```bash
-npm run build:mask -w @ordinara/icons   # src/mask/*.css dari icon-set.json (di-commit)
-npm run build:font -w @ordinara/icons   # dist/font/* (semua ikon, tidak di-commit, ~16 detik)
+npm run build:mask -w @dumns/ordinara-icons   # src/mask/*.css dari icon-set.json (di-commit)
+npm run build:font -w @dumns/ordinara-icons   # dist/font/* (semua ikon, tidak di-commit, ~16 detik)
 ```
 
 Catatan:
@@ -84,6 +84,6 @@ Catatan:
 | Gejala | Penyebab / solusi |
 | --- | --- |
 | Port 5173 atau 6006 sudah dipakai | Hentikan proses lama, atau jalankan dengan port lain: `npm run dev:preview -- --port 5180` |
-| Komponen Datatables tampil tanpa gaya | Jalankan ulang `npm run gen:library -w @ordinara/ui` agar `safelist.css` terbentuk |
+| Komponen Datatables tampil tanpa gaya | Jalankan ulang `npm run gen:library -w @dumns/ordinara` agar `safelist.css` terbentuk |
 | Perubahan CSS tidak muncul di build | Hapus `apps/preview/dist` lalu `npm run build` |
 | `EBUSY` saat generator jalan | Pindah shell ke root repo, lalu ulangi |

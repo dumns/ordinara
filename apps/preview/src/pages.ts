@@ -10,7 +10,7 @@ import {
   renderLibraryPage,
   renderFrameDemo,
   type IconName,
-} from "@ordinara/ui";
+} from "@dumns/ordinara";
 
 export type PageGroup = "Overview" | "Foundation" | "Helpers" | "Components" | "Forms" | "Typography" | "Plugins";
 
@@ -82,7 +82,7 @@ const overviewPage: Page = {
     const total = libraryRegistry.reduce((n, e) => n + e.examples, 0);
     return `<div class="space-y-8">
     <section class="space-y-5 pb-2 pt-2">
-      ${badge({ label: "Ordinara · Design System v0.1.0", tone: "primary", dot: true })}
+      ${badge({ label: "Ordinara · Design System v0.1.1", tone: "primary", dot: true })}
       <h2 class="max-w-3xl font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-fg sm:text-5xl">Tatanan yang terukur<br /><span class="text-primary-600">untuk setiap produk.</span></h2>
       <p class="max-w-2xl text-base text-fg-muted">Komponen siap pakai dengan token, dark mode, tema, dan RTL. ${libraryRegistry.length} halaman, ${total} contoh; setiap contoh punya preview HTML dan Storybook yang sinkron.</p>
       <div class="flex flex-wrap gap-3">

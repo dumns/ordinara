@@ -46,7 +46,7 @@ Untuk mencoba perubahan sebelum rilis. Tanpa tag dan tanpa publish npm. PR `dev/
 Setiap versi rilis menghasilkan tiga hal yang harus selaras:
 - **Changelog**: `CHANGELOG.md`, dikelompokkan *Breaking / Added / Changed / Fixed*, plus panduan migrasi untuk MAJOR.
 - **Git tag**: `v<version>` di `master`.
-- **Package npm**: versi sama dengan tag (mis. `@ordinara/*`), dipublish dari tag, bukan dari branch kerja. Versi Figma terkait dicatat di changelog.
+- **Package npm**: versi sama dengan tag (mis. `@dumns/ordinara-*`), dipublish dari tag, bukan dari branch kerja. Versi Figma terkait dicatat di changelog.
 
 ### Aturan
 - `release` hanya menerima merge dari `master`; `dev/vercel` hanya dari `development`.
@@ -63,10 +63,10 @@ Setiap versi rilis menghasilkan tiga hal yang harus selaras:
 ## Pustaka komponen
 
 Seluruh komponen (layout, varian, contoh) dibangun dari satu pipeline yang menghasilkan data halaman, story, dan preview dari sumber yang sama:
-- **Generator**: `npm run gen:library -w @ordinara/ui` membaca sumber dokumentasi komponen (plugin, di-cache di `packages/ui/.cache`), menyesuaikannya ke brand Ordinara (teks, logo, gambar placeholder, tautan eksternal dibersihkan), lalu menghasilkan `src/library/pages/*.ts`, `src/library/registry.ts`, story Storybook per section (`apps/storybook/stories/library/*`), dan `src/library/safelist.css`. File hasil generate **jangan diedit manual**.
+- **Generator**: `npm run gen:library -w @dumns/ordinara` membaca sumber dokumentasi komponen (plugin, di-cache di `packages/ui/.cache`), menyesuaikannya ke brand Ordinara (teks, logo, gambar placeholder, tautan eksternal dibersihkan), lalu menghasilkan `src/library/pages/*.ts`, `src/library/registry.ts`, story Storybook per section (`apps/storybook/stories/library/*`), dan `src/library/safelist.css`. File hasil generate **jangan diedit manual**.
 - **Rilis bertahap**: `packages/ui/library-manifest.json` menentukan halaman mana yang ikut versi berapa (`since`). Generator hanya membuat halaman dengan `since` <= versi paket, sehingga satu versi tidak memuat semua komponen. Untuk merilis komponen berikutnya: naikkan versi (MINOR), tambah id di manifest, jalankan generator, perbarui `TASKS.md` dan changelog. Inti 0.1.0: alerts, avatar, badge, breadcrumb, buttons, button group, card, dropdowns, list group, modal, pagination, progress, sidebar, tables, tabs, toast, tooltips, plus form (input, search, select, textarea, checkbox, radio, toggle) dan divider.
 - **Gaya**: markup komponen memakai token semantik; `packages/tokens/src/compat.css` memetakan semuanya ke skala Ordinara, sehingga markup dipakai apa adanya tetapi tampil dengan warna, radius, dark mode, dan tema Ordinara. Alias `gray-*` dan `blue-*` dipetakan ke `neutral`/`primary`. Ubah tampilan lewat token, bukan dengan mengedit markup.
-- **Interaktivitas**: preview dan Storybook memanggil `initLibrary(root)` dari `@ordinara/ui` setelah markup masuk DOM (mengaktifkan accordion, dropdown, modal, tabs, tooltip, serta skrip contoh seperti grafik dan tabel data).
+- **Interaktivitas**: preview dan Storybook memanggil `initLibrary(root)` dari `@dumns/ordinara` setelah markup masuk DOM (mengaktifkan accordion, dropdown, modal, tabs, tooltip, serta skrip contoh seperti grafik dan tabel data).
 - **Catatan teknis**: contoh modal/drawer dirender tanpa wrapper `transform` (backdrop ditempel ke `<body>`); contoh lain memakai wrapper `transform` agar elemen `fixed` tetap di dalam frame. Class yang dibuat JS saat runtime ditangani `@source` ke bundel JS plugin dan safelist.
 - **Helper TS** (`button()`, `badge()`, `card()`, `frame()`) menghasilkan markup bergaya Ordinara untuk pemakaian programatik; ada di grup "Helpers".
 
@@ -99,17 +99,17 @@ Tiga referensi dashboard (LMS "Enrolliq" dan hotel dashboard) menunjukkan arah v
 Gunakan sebagai inspirasi gaya, bukan untuk disalin piksel per piksel.
 
 ### Gaya visual Ordinara
-Nilai berikut adalah identitas visual Ordinara (di `@ordinara/tokens`). Setiap komponen baru harus memakainya; jangan menambah nilai ad-hoc.
+Nilai berikut adalah identitas visual Ordinara (di `@dumns/ordinara-tokens`). Setiap komponen baru harus memakainya; jangan menambah nilai ad-hoc.
 
 **Token**
-- Font: body netral dan font display bersudut hangat untuk judul, angka, dan penanda (lewat `@ordinara/ui/fonts.css`). Semua `h1`–`h6` otomatis memakai `font-display`; tabel memakai angka rata (`tabular-nums`).
+- Font: body netral dan font display bersudut hangat untuk judul, angka, dan penanda (lewat `@dumns/ordinara/fonts.css`). Semua `h1`–`h6` otomatis memakai `font-display`; tabel memakai angka rata (`tabular-nums`).
 - Warna: `primary` biru (`#2361e7` di 600) untuk aksi, `secondary` oranye (`#f67e28`), `neutral` slate, plus `success`, `warning`, `danger`, `info`, semuanya 50–950. Tampilan harus **tenang dan profesional**: hindari warna neon/mencolok (mis. lime, ungu terang), gradient ramai, dan dekorasi yang tidak punya fungsi.
 - Radius: `rounded-control` (xl, 0.75rem), `rounded-card` (2xl, 1rem), `rounded-check` (6px), `rounded-frame` (3xl). Teks tambahan: `text-btn-lg` (15px), `text-micro` (11px).
 - Shadow: `shadow-card`, `shadow-card-lg`, `shadow-glow-primary`. z-index: dropdown 20, sticky 30, overlay 40, toast 50. Motion: `ease-out-soft`, durasi fast 150ms / normal 200ms, `animate-fade-in`, `animate-spin-slow`.
 - Dark mode MEMBALIK nilai skala primitive di `.dark` / `html[data-theme="dark"]` (neutral dibalik; primary/status 50–200 dan 700–900 diganti). Karena itu pakai utilitas skala (`bg-neutral-100`, `text-primary-700`), jangan menambah `dark:` ad-hoc. Hover tombol solid memakai `hover-primary`/`hover-danger` yang tidak ikut dibalik.
 - Utilitas brand: `bg-shell` (gradient radial lembut biru + oranye), `bg-brand-gradient`, `bg-brand-gradient-soft`, `scrollbar-none`.
-- Paket npm (`tokens`, `icons`, `ui`): `exports` memakai kondisi `source` (monorepo membaca source TS) dan `dist` untuk konsumen. Build `npm run build:packages` (icons dulu, lalu ui); isi tarball dicek lewat `npm run pack:check`. Vite/Storybook sudah memakai `resolve.conditions: ["source", ...]`.
-- Ikon: class `ori ori-nama` / `ori-bold` / `ori-fill` dari paket `@ordinara/icons` (jalur CSS mask `mask.css` untuk ikon terdaftar di `packages/icons/icon-set.json`, jalur font `font.css` untuk semua ikon), dan helper TS `icon()` (SVG inline). Tambah ikon: edit `icon-set.json` lalu `npm run build:mask -w @ordinara/icons`. Sumber SVG Phosphor (MIT); pemberitahuan lisensi hanya di `packages/icons/NOTICE`, jangan disebut di UI/dokumentasi.
+- Paket npm (`tokens`, `icons`, `ui`): `exports` memakai kondisi `source` (monorepo membaca source TS) dan `dist` untuk konsumen. Terbit ke GitHub Packages (scope `@dumns`) lewat `.github/workflows/publish.yml` saat push ke branch `production`. Build `npm run build:packages` (icons dulu, lalu paket utama); isi tarball dicek lewat `npm run pack:check`. Vite/Storybook sudah memakai `resolve.conditions: ["source", ...]`.
+- Ikon: class `ori ori-nama` / `ori-bold` / `ori-fill` dari paket `@dumns/ordinara-icons` (jalur CSS mask `mask.css` untuk ikon terdaftar di `packages/icons/icon-set.json`, jalur font `font.css` untuk semua ikon), dan helper TS `icon()` (SVG inline). Tambah ikon: edit `icon-set.json` lalu `npm run build:mask -w @dumns/ordinara-icons`. Sumber SVG Phosphor (MIT); pemberitahuan lisensi hanya di `packages/icons/NOTICE`, jangan disebut di UI/dokumentasi.
 
 **Ciri khas Ordinara (halus, fungsional)**
 - **Font display** untuk semua `h1`–`h6`, judul, dan angka; font body netral; angka tabel rata.

@@ -8,7 +8,7 @@ const config: StorybookConfig = {
   framework: "@storybook/html-vite",
   async viteFinal(config) {
     config.plugins = [...(config.plugins ?? []), tailwindcss()];
-    // Monorepo: paket @ordinara/* dibaca dari source TypeScript (kondisi "source"), bukan dist hasil build.
+    // Monorepo: paket @dumns/ordinara-* dibaca dari source TypeScript (kondisi "source"), bukan dist hasil build.
     config.resolve = { ...config.resolve, conditions: ["source", ...defaultClientConditions] };
     return config;
   },

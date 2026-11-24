@@ -1,5 +1,6 @@
 @import "tailwindcss";
-@import "@ordinara/tokens/tokens.css";
+@import "@dumns/ordinara-tokens/tokens.css";
+@import "@dumns/ordinara-icons/mask/vars.css";
 @import "./library/safelist.css";
 @plugin "flowbite/plugin";
 
@@ -216,10 +217,17 @@ button[class~="bg-neutral-secondary-medium"][class~="border-default-medium"]:hov
     color: var(--color-primary-700);
     font-weight: 600;
   }
+  /* Centang opsi terpilih: ikon `ori` check (bold) lewat mask, bukan glyph teks bawaan browser. */
   select:not([multiple]):not([size]) option::checkmark {
+    content: "";
     order: 1;
+    flex-shrink: 0;
+    width: 1rem;
+    height: 1rem;
     margin-inline-start: auto;
-    color: var(--color-primary-600);
+    background-color: var(--color-primary-600);
+    -webkit-mask: var(--ori-check) center / contain no-repeat;
+    mask: var(--ori-check) center / contain no-repeat;
   }
   select:not([multiple]):not([size]) option:disabled {
     opacity: 0.5;
