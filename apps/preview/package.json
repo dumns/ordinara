@@ -1,6 +1,6 @@
 {
   "name": "@dumns/ordinara-preview",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,8 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@dumns/ordinara": "0.1.0",
-    "@dumns/ordinara-icons": "0.1.0"
+    "@dumns/ordinara": "0.1.1",
+    "@dumns/ordinara-icons": "0.1.1"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",

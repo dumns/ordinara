@@ -1,6 +1,6 @@
 {
   "name": "@dumns/ordinara-storybook",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,8 +8,8 @@
     "build": "storybook build"
   },
   "dependencies": {
-    "@dumns/ordinara": "0.1.0",
-    "@dumns/ordinara-icons": "0.1.0"
+    "@dumns/ordinara": "0.1.1",
+    "@dumns/ordinara-icons": "0.1.1"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^10.6.2",

@@ -212,3 +212,5 @@ Syarat rilis 0.1.0 yang masih terbuka. Centang hanya setelah diverifikasi.
 | 2026-10-25 | Build paket npm (tokens, icons, ui) dengan dist + types, diuji dari tarball; AGENTS.md dan CLAUDE.md ditambahkan; status Vercel dan branch permanen diperbarui; bagian "Improvement sebelum rilis 0.1.0" ditambahkan. |
 | 2026-10-31 | Rilis 0.1.0: CHANGELOG diberi tanggal, branch release/0.1.0, merge ke master, branch produksi, tag v0.1.0. |
 | 2026-10-31 | Publish diganti ke GitHub Packages (seperti KarirKit): paket dinamai ulang `@dumns/ordinara`, `@dumns/ordinara-tokens`, `@dumns/ordinara-icons`; ditambah workflow publish dan `.npmrc`. Publish npmjs.com dibatalkan (butuh OTP dan organisasi). |
+| 2026-11-24 | Perbaikan select: centang opsi terpilih memakai ikon `ori` check (variabel CSS `--ori-check` dari paket ikon). Versi berjalan 0.1.1. |
+| 2026-11-24 | Rilis 0.1.1: versi paket dinaikkan, CHANGELOG diberi tanggal, branch release/0.1.1, merge ke master, tag v0.1.1. |

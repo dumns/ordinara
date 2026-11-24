@@ -5,6 +5,14 @@ Kelompok: **Breaking / Added / Changed / Fixed**.
 
 Rilis dilakukan bertahap: setiap versi hanya memuat komponen yang dijadwalkan untuk versi itu (`packages/ui/library-manifest.json`).
 
+## [0.1.1] — 2026-11-24
+
+### Fixed
+- Select: centang opsi terpilih pada popup dropdown kini memakai ikon `ori` check (bobot bold, lewat mask dan variabel CSS `--ori-check`), bukan glyph teks bawaan browser, sehingga seragam dengan ikon lain di design system.
+
+### Added
+- `@dumns/ordinara-icons`: `mask/vars.css` menyediakan ikon terpilih sebagai variabel CSS `--ori-<nama>` (daftar `vars` di `icon-set.json`, saat ini `check`) untuk CSS komponen yang tidak bisa memakai elemen `<i>`.
+
 ## [0.1.0] — 2026-10-31 (komponen inti)
 
 ### Added

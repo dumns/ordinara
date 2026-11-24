@@ -1,6 +1,6 @@
 {
   "name": "@dumns/ordinara-tokens",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Ordinara design tokens (Tailwind CSS v4 theme + CSS variables)",
   "type": "module",
   "license": "MIT",
