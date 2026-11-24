@@ -1,6 +1,6 @@
 // Menghasilkan src/mask/*.css (jalur CSS mask) dari SVG Phosphor (MIT): class "ori ori-<nama>",
 // "ori-bold ori-<nama>", "ori-fill ori-<nama>". Hanya ikon di icon-set.json yang disertakan.
-// Jalankan: npm run build:mask -w @ordinara/icons
+// Jalankan: npm run build:mask -w @dumns/ordinara-icons
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -21,7 +21,7 @@ const DIRECTIONAL = [
   "list-bullets", "text-align-left", "text-align-right", "trend-up", "trend-down",
 ];
 
-const { names } = JSON.parse(readFileSync(join(root, "icon-set.json"), "utf8"));
+const { names, vars = [] } = JSON.parse(readFileSync(join(root, "icon-set.json"), "utf8"));
 const unique = [...new Set(names)].sort();
 
 const uri = (svg) =>
@@ -60,6 +60,18 @@ const rtl = DIRECTIONAL.map((n) => `[dir="rtl"] .ori-${n}`).join(",") + "{transf
 mkdirSync(join(root, "src/mask"), { recursive: true });
 writeFileSync(join(root, "src/mask/base.css"), HEADER + "/* Dasar: ukuran = font-size, warna = color. */" + NL + base + NL + rtl + NL);
 
+// Ikon sebagai variabel CSS (bobot bold) untuk CSS komponen yang tidak bisa memakai elemen <i>,
+// mis. checkmark opsi select: `mask: var(--ori-check)`. Daftar nama ada di "vars" pada icon-set.json.
+const varRules = vars.map((name) => {
+  const file = join(assets, "bold", `${name}-bold.svg`);
+  if (!existsSync(file)) throw new Error(`Ikon vars tidak ditemukan di Phosphor: bold/${name}`);
+  return `--ori-${name}:${uri(readFileSync(file, "utf8"))}`;
+});
+writeFileSync(
+  join(root, "src/mask/vars.css"),
+  HEADER + "/* Ikon sebagai variabel CSS (bobot bold): mask: var(--ori-nama). */" + NL + `:root{${varRules.join(";")}}` + NL,
+);
+
 const sizes = [];
 for (const [weight, rules] of Object.entries(byWeight)) {
   const css = HEADER + `/* Bobot ${weight}: <i class="${WEIGHTS[weight].cls} ori-nama"></i> */` + NL + rules.join(NL) + NL;
@@ -70,7 +82,7 @@ for (const [weight, rules] of Object.entries(byWeight)) {
 writeFileSync(
   join(root, "src/mask.css"),
   HEADER +
-    '/* Semua bobot. Untuk satu bobot saja: import "@ordinara/icons/mask/base.css" dan "@ordinara/icons/mask/regular.css". */' + NL +
+    '/* Semua bobot. Untuk satu bobot saja: import "@dumns/ordinara-icons/mask/base.css" dan "@dumns/ordinara-icons/mask/regular.css". */' + NL +
     '@import "./mask/base.css";' + NL +
     '@import "./mask/regular.css";' + NL +
     '@import "./mask/bold.css";' + NL +

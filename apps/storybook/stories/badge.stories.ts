@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/html-vite";
-import { badge, badgeTones, renderBadgeDemo, type BadgeProps } from "@ordinara/ui";
+import { badge, badgeTones, renderBadgeDemo, type BadgeProps } from "@dumns/ordinara";
 
 const meta: Meta<BadgeProps> = {
   title: "Ordinara/Badge",

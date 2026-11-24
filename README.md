@@ -10,9 +10,9 @@ apps/
   preview/      Preview HTML (Vite, app shell, router hash)
   storybook/    Storybook 10 (html-vite)
 packages/
-  tokens/       @ordinara/tokens  - skala warna, semantic, tema, radius, shadow, animasi
-  icons/        @ordinara/icons   - ikon lewat class `ori ori-nama` (CSS mask atau font)
-  ui/           @ordinara/ui      - CSS, font, helper komponen, pustaka komponen
+  tokens/       @dumns/ordinara-tokens  - skala warna, semantic, tema, radius, shadow, animasi
+  icons/        @dumns/ordinara-icons   - ikon lewat class `ori ori-nama` (CSS mask atau font)
+  ui/           @dumns/ordinara      - CSS, font, helper komponen, pustaka komponen
 scripts/        Skrip repo (laporan ukuran, dll.)
 CHANGELOG.md    Riwayat rilis
 TASKS.md        Checklist komponen (dicentang hanya setelah terverifikasi)
@@ -28,6 +28,26 @@ npm run dev:storybook   # http://localhost:6006
 ```
 
 Detail lengkap ada di [RUN.md](RUN.md).
+
+## Memasang paket
+
+Paket terbit di GitHub Packages (bagian **Packages** repo ini): `@dumns/ordinara` (komponen dan style), `@dumns/ordinara-tokens`, dan `@dumns/ordinara-icons`. Tambahkan ke `.npmrc` proyekmu (token dengan scope `read:packages`):
+
+```
+@dumns:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=<token>
+```
+
+```bash
+npm install @dumns/ordinara
+```
+
+```ts
+import "@dumns/ordinara/fonts.css";
+import "@dumns/ordinara/styles.css";
+import "@dumns/ordinara-icons/mask.css";
+import { button } from "@dumns/ordinara";
+```
 
 ## Prinsip
 

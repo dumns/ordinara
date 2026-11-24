@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/html-vite";
-import { frame, renderFrameDemo, type FrameProps } from "@ordinara/ui";
+import { frame, renderFrameDemo, type FrameProps } from "@dumns/ordinara";
 
 const meta: Meta<FrameProps> = {
   title: "Ordinara/Frame",

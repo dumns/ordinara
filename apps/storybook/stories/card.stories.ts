@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/html-vite";
-import { badgeTones, card, renderCardDemo, type CardProps } from "@ordinara/ui";
+import { badgeTones, card, renderCardDemo, type CardProps } from "@dumns/ordinara";
 
 const meta: Meta<CardProps> = {
   title: "Ordinara/Card",

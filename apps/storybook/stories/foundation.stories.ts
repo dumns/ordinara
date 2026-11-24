@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/html-vite";
-import { foundationSections } from "@ordinara/ui";
+import { foundationSections } from "@dumns/ordinara";
 
 const meta: Meta = { title: "Foundation" };
 export default meta;

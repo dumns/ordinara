@@ -1,0 +1,42 @@
+name: Publish packages
+
+# Terbit ke GitHub Packages setiap kali branch `production` di-push. Versi yang sudah terbit dilewati,
+# jadi push tanpa kenaikan versi tidak memicu publish ulang. Bisa juga dijalankan manual (Run workflow).
+on:
+  push:
+    branches: [production]
+  workflow_dispatch: {}
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://npm.pkg.github.com
+          scope: "@dumns"
+
+      - run: npm ci
+      - run: npx tsc -b
+      - run: npm run build:packages
+
+      # Urutan penting: tokens dan icons dulu, baru paket utama yang bergantung pada keduanya.
+      - name: Publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          for pkg in tokens icons ui; do
+            name=$(node -p "require('./packages/$pkg/package.json').name")
+            version=$(node -p "require('./packages/$pkg/package.json').version")
+            if npm view "$name@$version" version >/dev/null 2>&1; then
+              echo "$name@$version sudah terbit, dilewati"
+            else
+              npm publish --workspace "$name"
+            fi
+          done
